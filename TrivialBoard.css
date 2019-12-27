@@ -10,6 +10,7 @@ header
     border-color:       black;
     margin-left:        auto;
     margin-right:       auto;
+    margin-bottom:      2%;
     width:              6em;
 }
 
@@ -18,7 +19,6 @@ canvas
     padding:        0;
     margin:         auto;
     display:        block;
-    position:       absolute;
     top:            0;
     bottom:         0;
     left:           0;
@@ -31,4 +31,52 @@ canvas
 body
 {
     background-color: Gray;
+}
+
+article
+{
+    margin:             15px;
+    padding:            5px;
+    font-family:        "Verdana";
+    text-shadow:        -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color:              white;
+    background-color:   #4d4d4d;
+    border-width:       1px;
+    border-style:       solid;
+    border-color:       black;
+}
+
+article h1
+{
+    text-align: center;
+}
+
+article h2
+{
+    text-align: center;
+    size: 20;
+}
+
+.left
+{
+    float: left;
+}
+.right
+{
+    float: right;
+}
+.bottom
+{
+    margin-top: 2%;
+    clear: both;
+}
+
+.game_config
+{
+    margin-top: 30%;
+}
+
+.question section
+{
+    text-align: center;
 }
