@@ -5,6 +5,9 @@ class view{
 
 		this.ctx.fillStyle = "#4d4d4d";
 		this.ctx.fillRect(0, 0, canvas.width, canvas.height);
+		this.ctx.fillStyle = "white";
+		this.ctx.strokeStyle = "black";
+		this.ctx.lineWidth = 3;
 	}
 
 
@@ -194,6 +197,28 @@ class view{
 	}
 
 
+	drawSegments6_2(){
+		var ctx = this.ctx
+		var size = 40,
+			size_2 = 153,
+		    Xcenter = 370,
+		    Ycenter = 250,
+		    angle = Math.PI / 6;
+
+		ctx.setTransform(1, 0, 0, 1, Xcenter + size * Math.cos(4 * angle), Ycenter + size * Math.sin(4 * angle));
+		ctx.moveTo(0, 0)
+		ctx.lineTo(size_2 * Math.cos(5 * angle), size_2 * Math.sin(5 * angle))
+		ctx.stroke();
+
+		ctx.setTransform(1, 0, 0, 1, Xcenter + size * Math.cos(6 * angle), Ycenter + size * Math.sin(6 * angle));
+		ctx.moveTo(0, 0)
+		ctx.lineTo(size_2 * Math.cos(5 * angle), size_2 * Math.sin(5 * angle))
+		ctx.stroke();
+
+		ctx.fill()
+	}
+
+
 	draw(){
 		this.drawCircle1();
 		this.drawCircle2();
@@ -203,6 +228,7 @@ class view{
 		this.drawSegments3();
 		this.drawSegments4();
 		this.drawSegments5();
-		this.drawSegments6();
+		//this.drawSegments6();
+		this.drawSegments6_2();
 	}
 }	
