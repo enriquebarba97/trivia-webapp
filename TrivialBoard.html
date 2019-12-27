@@ -1,232 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
 
+<title>MESC Trivia</title>
+
+<link rel="icon" href="icon.jpg">
+
+<link rel = "stylesheet"
+    type = "text/css"
+    href = "TrivialBoard.css" />
+
+<meta charset="UTF-8">
+
+</head>
 <body>
 
-<script src="apiFunctions.js"></script>
+<header>MESC Trivia</header>
 
-<canvas id="myCanvas" width="740" height="500"
-style="border:1px solid #d3d3d3;">
+<div class="left">
+    <article>
+        <h1>Who's turn is it ?</h1>
+        <section>XYZ</section>
+    </article>
+
+    <article>
+        <h1>Roll the Dice!</h1>
+        <section>XYZ</section>
+    </article>
+
+    <article class="game_config">
+        <h1>Game Configuration</h1>
+        <section>XYZ</section>
+    </article>
+</div>
+
+<div class="right">
+    <article>
+        <h1>Score</h1>
+        <section>XYZ</section>
+    </article>
+
+    <article>
+        <h1>Question History</h1>
+        <section>XYZ</section>
+    </article>
+</div>
+
+<canvas id="myCanvas" width="740" height="500">
 Your browser does not support the canvas element.
 </canvas>
 
-<button id="button">Question</button>
-<div id="quiz"></div>
-<button id="submit">Check answer</button>
+<div class="bottom">
+    <article class="question">
+        <h2>QUESTION</h2>
+            <button id="button">Question</button>
+            <div id="quiz"></div>
+            <button id="submit">Check answer</button>
+    </article>
+</div>
+
+<!-- Include all js files -->
+<script src="src/view.js"></script>
+<script src="src/model.js"></script>
+<script src="src/controller.js"></script>
+<script src="src/main.js"></script>
 
 
-
-<script>
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-
-ctx.fillStyle = "blue";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-drawCircle1();
-drawCircle2();
-drawHexagon();
-drawSegments();
-drawSegments2();
-drawSegments3();
-drawSegments4();
-drawSegments5();
-drawSegments6();
-
-
-
-function drawCircle1() {
-ctx.beginPath();
-ctx.arc(370,250,240,0,2*Math.PI);
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-}
-
-function drawCircle2() {
-ctx.beginPath();
-ctx.arc(370,250,190,0,2*Math.PI);
-ctx.fillStyle = "blue";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-
-}
-
-function drawHexagon(){
-var numberOfSides = 6,
-    size = 40,
-    Xcenter = 370,
-    Ycenter = 250;
-
-ctx.beginPath();
-ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));          
-
-for (var i = 1; i <= numberOfSides;i += 1) {
-  ctx.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
-}
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-}
-
-function drawSegments(){
-var numberOfSides = 6,
-    size = 40,
-    Xcenter = 370,
-    Ycenter = 250;
-
-ctx.beginPath();
-
-ctx.moveTo (Xcenter -  size * Math.cos(0), Ycenter +  size *  Math.sin(0)); 
-
-ctx.lineTo(195,180);
-ctx.lineTo(212,145);
-ctx.lineTo (Xcenter + size * Math.cos(4 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(4 * 2 * Math.PI / numberOfSides));
-ctx.lineTo (Xcenter -  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
-
-
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-ctx.closePath();
-
-
-}
-function drawSegments2(){
-var numberOfSides = 6,
-    size = 40,
-    Xcenter = 370,
-    Ycenter = 250;
-
-ctx.beginPath();
-ctx.moveTo (Xcenter + size * Math.cos(4 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(4 * 2 * Math.PI / numberOfSides)); 
-ctx.lineTo(Xcenter + size * Math.cos(4 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(4 * 2 * Math.PI / numberOfSides)- 154);
-ctx.lineTo(Xcenter + size * Math.cos(4 * 2 * Math.PI / numberOfSides)+40, Ycenter + size * Math.sin(4 * 2 * Math.PI / numberOfSides)- 154);
-ctx.lineTo(Xcenter + size * Math.cos(5 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(5 * 2 * Math.PI / numberOfSides));
-ctx.lineTo (Xcenter + size * Math.cos(4 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(4 * 2 * Math.PI / numberOfSides)); 
-
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-ctx.closePath();
-
-
-}
-
-function drawSegments3(){
-var numberOfSides = 6,
-    size = 40,
-    Xcenter = 370,
-    Ycenter = 250;
-
-ctx.beginPath();
-ctx.moveTo (Xcenter + size * Math.cos(5 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(5 * 2 * Math.PI / numberOfSides)); 
-ctx.lineTo(528,145);
-ctx.lineTo(548,180);
-ctx.lineTo(Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
-ctx.lineTo (Xcenter + size * Math.cos(5 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(5 * 2 * Math.PI / numberOfSides)); 
-
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-ctx.closePath();
-
-
-}
-
-function drawSegments4(){
-var numberOfSides = 6,
-    size = 40,
-    Xcenter = 370,
-    Ycenter = 250;
-
-ctx.beginPath();
-ctx.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0)); 
-ctx.lineTo(548,317);
-ctx.lineTo(525,360);
-ctx.lineTo(Xcenter + size * Math.cos(1 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(1 * 2 * Math.PI / numberOfSides));
-ctx.lineTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0)); 
-
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-ctx.closePath();
-
-
-}
-
-function drawSegments5(){
-var numberOfSides = 6,
-    size = 40,
-    Xcenter = 370,
-    Ycenter = 250;
-
-ctx.beginPath();
-ctx.moveTo (Xcenter + size * Math.cos(1 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(1 * 2 * Math.PI / numberOfSides)); 
-ctx.lineTo(Xcenter + size * Math.cos(1 * 2 * Math.PI / numberOfSides), Xcenter + size * Math.cos(1 * 2 * Math.PI / numberOfSides)+48);
-ctx.lineTo(Xcenter + size * Math.cos(2 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(2 * 2 * Math.PI / numberOfSides)+153);
-ctx.lineTo(Xcenter + size * Math.cos(2 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(2 * 2 * Math.PI / numberOfSides));
-ctx.lineTo (Xcenter + size * Math.cos(1 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(1 * 2 * Math.PI / numberOfSides)); 
-
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-ctx.closePath();
-
-
-}
-
-function drawSegments6(){
-var numberOfSides = 6,
-    size = 40,
-    Xcenter = 370,
-    Ycenter = 250;
-
-ctx.beginPath();
-ctx.moveTo (Xcenter + size * Math.cos(2 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(2 * 2 * Math.PI / numberOfSides)); 
-ctx.lineTo(215,360);
-ctx.lineTo(192,317);
-ctx.lineTo(Xcenter + size * Math.cos(3 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(3 * 2 * Math.PI / numberOfSides));
-ctx.lineTo (Xcenter + size * Math.cos(2 * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(2 * 2 * Math.PI / numberOfSides)); 
-
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.strokeStyle = "black";
-ctx.lineWidth = 3;
-ctx.stroke();
-ctx.closePath();
-
-
-}
-
-
-
-
-</script> 
-
-<script src="apiFunctions.js"></script>
+<script src="src/apiFunctions.js"></script>
 
 </body>
 </html>
