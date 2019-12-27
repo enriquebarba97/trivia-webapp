@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
+<head>
+
+<title>MESC Trivia</title>
+
+<link rel="icon" href="icon.jpg">
+
+<link rel = "stylesheet"
+    type = "text/css"
+    href = "TrivialBoard.css" />
+
+</head>
 <body>
 
-<canvas id="myCanvas" width="740" height="500"
-style="border:1px solid #d3d3d3;">
+<header>MESC Trivia</header>
+
+<canvas id="myCanvas" width="740" height="500">
 Your browser does not support the canvas element.
 </canvas>
 
@@ -11,7 +23,7 @@ Your browser does not support the canvas element.
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-ctx.fillStyle = "blue";
+ctx.fillStyle = "#4d4d4d";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 drawCircle1();
@@ -39,7 +51,7 @@ ctx.stroke();
 function drawCircle2() {
 ctx.beginPath();
 ctx.arc(370,250,190,0,2*Math.PI);
-ctx.fillStyle = "blue";
+ctx.fillStyle = "DimGray";
 ctx.fill();
 ctx.strokeStyle = "black";
 ctx.lineWidth = 3;
