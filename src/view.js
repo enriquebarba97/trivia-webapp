@@ -3,7 +3,7 @@ class view{
 		var canvas = document.getElementById("myCanvas");
 		this.ctx = canvas.getContext("2d");
 
-		this.ctx.fillStyle = "blue";
+		this.ctx.fillStyle = "#4d4d4d";
 		this.ctx.fillRect(0, 0, canvas.width, canvas.height);
 	}
 
@@ -24,7 +24,7 @@ class view{
 		var ctx = this.ctx
 		ctx.beginPath();
 		ctx.arc(370,250,190,0,2*Math.PI);
-		ctx.fillStyle = "blue";
+		ctx.fillStyle = "#4d4d4d";
 		ctx.fill();
 		ctx.strokeStyle = "black";
 		ctx.lineWidth = 3;
