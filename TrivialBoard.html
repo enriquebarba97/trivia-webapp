@@ -13,6 +13,7 @@
 <meta charset="UTF-8">
 
 </head>
+
 <body>
 
 <header>MESC Trivia</header>
@@ -62,13 +63,59 @@ Your browser does not support the canvas element.
 </div>
 
 <!-- Include all js files -->
+<script src="src/apiFunctions.js"></script>
 <script src="src/view.js"></script>
 <script src="src/model.js"></script>
 <script src="src/controller.js"></script>
 <script src="src/main.js"></script>
 
+<!-- START TEST -->
+<script>
+var currentX;
+var currentY;
+var initialX;
+var initialY;
+var xOffset = 0;
+var yOffset = 0;
 
-<script src="src/apiFunctions.js"></script>
+function setTranslate(xPos, yPos, el) {
+    el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+}
+
+function allowDrop(e) {
+    e.preventDefault();
+    currentX = e.clientX - initialX;
+    currentY = e.clientY - initialY;
+    xOffset = currentX;
+    yOffset = currentY;
+    setTranslate(currentX, currentY, e.target);
+}
+
+function drag(e) {
+    e.dataTransfer.setData("text", e.target.id);
+    e.preventDefault()
+    initialX = e.clientX - xOffset;
+    initialY = e.clientY - yOffset;
+}
+
+function frop(e){
+  initialX = currentX;
+  initialY = currentY;
+}
+</script>
+
+<style>
+#player {
+  width: 40px;
+  height: 70px;
+  padding: 10px;
+  border: 2px solid #000000;
+}
+</style>
+<div id="player" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"  ></div>
+<!-- END TEST -->
+
+
 
 </body>
 </html>
