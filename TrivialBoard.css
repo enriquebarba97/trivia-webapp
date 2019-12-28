@@ -81,12 +81,17 @@ article section
 
 .game_config
 {
-    margin-top: 30%;
+    margin-top: 15%;
 }
 .question section
 {
     text-align: center;
     padding-bottom: 1%;
+}
+
+#quiz
+{
+    font-size: large;
 }
 
 .dice_pic
