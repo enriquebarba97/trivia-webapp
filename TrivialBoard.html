@@ -4,7 +4,7 @@
 
 <title>MESC Trivia</title>
 
-<link rel="icon" href="icon.jpg">
+<link rel="icon" href="img/icon.jpg">
 
 <link rel = "stylesheet"
     type = "text/css"
@@ -19,13 +19,23 @@
 
 <div class="left">
     <article>
-        <h1>Who's turn is it ?</h1>
+        <h1>Whose turn is it ?</h1>
         <section>XYZ</section>
     </article>
 
     <article>
         <h1>Roll the Dice!</h1>
-        <section>XYZ</section>
+        <section>
+            <div class="dice_pic">
+                <img src="img/dice.png" width="70px">
+            </div>
+            <div id="dice_number">
+                
+            </div>
+            <div class="dice_button">
+                <button class="butt" id="roll">ROLL</button>
+            </div>
+        </section>
     </article>
 
     <article class="game_config">
@@ -54,9 +64,9 @@ Your browser does not support the canvas element.
     <article class="question">
         <h2>QUESTION</h2>
         <section>
-            <button id="button">Fetch new Question</button>
+            <button class="butt" id="button">Fetch new Question</button>
             <div id="quiz"></div>
-            <button id="submit">Check answer</button>
+            <button class="butt" id="submit">Check answer</button>
         </section>
     </article>
 </div>
@@ -66,7 +76,6 @@ Your browser does not support the canvas element.
 <script src="src/model.js"></script>
 <script src="src/controller.js"></script>
 <script src="src/main.js"></script>
-
 
 <script src="src/apiFunctions.js"></script>
 
