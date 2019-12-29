@@ -1,4 +1,5 @@
 
 'use strict';	
-controller = new controller();
-controller.run();
+model.instance();
+view.instance();
+controller.instance();

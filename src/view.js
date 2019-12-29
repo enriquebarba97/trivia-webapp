@@ -1,5 +1,5 @@
 class view{
-	ins = null;
+	instance_ = null;
 	constructor(){
 		this.canvas = document.getElementById("myCanvas");
 		this.canvas.onmousedown = this.mouseDown;
@@ -92,7 +92,6 @@ class view{
 
 
 	mouseDown(e){
-		console.log("mouseDown");
 		var v = view.instance();
 		if(e.pageX < v.x + 15 + v.canvas.offsetLeft && e.pageX > v.x - 15 + v.canvas.offsetLeft 
 			&& e.pageY < v.y + 15 + v.canvas.offsetTop && e.pageY > v.y -15 + v.canvas.offsetTop){
@@ -101,13 +100,11 @@ class view{
 			v.y = e.pageY - v.canvas.offsetTop;
 			v.allow_drag = true;
 			v.canvas.onmousemove = v.mouseMove;
-			console.log(v.canvas.onmousemove)
 		}
 	}
 
 
 	mouseUp(e){
-		console.log("mouseUp");
 		var v = view.instance();
 		v.allow_drag = false;
  		v.canvas.onmousemove = null;
@@ -115,7 +112,6 @@ class view{
 
 
 	mouseMove(e){
-		console.log("mouseMove");
 		var v = view.instance();
 		if(v.allow_drag){
 			v.x = e.pageX - v.canvas.offsetLeft;
@@ -125,12 +121,12 @@ class view{
 
 
 	static instance(){
-		if(view.ins == null){
-			view.ins = new view();
-			return view.ins;
+		if(view.instance_ == null){
+			view.instance_ = new view();
+			return view.instance_;
 		}
 		else{
-			return view.ins;
+			return view.instance_;
 		}
 	}
 }	
