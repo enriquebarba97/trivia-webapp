@@ -1,19 +1,22 @@
 class view{
+	ins = null;
 	constructor(){
-		var canvas = document.getElementById("myCanvas");
-		this.ctx = canvas.getContext("2d");
-
-		this.ctx.fillStyle = "#4d4d4d";
-		this.ctx.fillRect(0, 0, canvas.width, canvas.height);
-		this.ctx.fillStyle = "white";
-		this.ctx.strokeStyle = "black";
-		this.ctx.lineWidth = 3;
+		this.canvas = document.getElementById("myCanvas");
+		this.canvas.onmousedown = this.mouseDown;
+		this.canvas.onmouseup = this.mouseUp;
+		this.ctx = this.canvas.getContext("2d");
 
 		this.Xcenter = 370;
 		this.Ycenter = 250;
 		this.size = 40;
-		this.size_2 = 153;
+		this.size_2 = 154;
 		this.numberOfSides = 6;
+		this.allow_drag = false;
+
+		this.x = this.Xcenter;
+		this.y = this.Ycenter;
+
+		setInterval(this.draw, 10);
 	}
 
 
@@ -59,10 +62,75 @@ class view{
 	}
 
 
+	drawPlayers(){
+		var ctx = this.ctx;
+		//todo draw players
+		ctx.resetTransform();
+		ctx.fillStyle = "#222222";
+		ctx.beginPath();
+		ctx.rect(this.x - 15, this.y - 15, 30, 30);
+		ctx.closePath();
+		ctx.fill();
+	}
+
+
 	draw(){
-		this.drawCircle(240, "white");
-		this.drawCircle(190, "#4d4d4d");
-		this.drawHexagon();
-		this.drawSegments();
+		var v = view.instance();
+		var ctx = v.ctx
+		ctx.resetTransform();
+		ctx.fillStyle = "#4d4d4d";
+		ctx.fillRect(0, 0, v.canvas.width, v.canvas.height);
+		ctx.fillStyle = "white";
+		ctx.strokeStyle = "black";
+		ctx.lineWidth = 3;
+		v.drawCircle(240, "white");
+		v.drawCircle(190, "#4d4d4d");
+		v.drawHexagon();
+		v.drawSegments();
+		v.drawPlayers();
+	}
+
+
+	mouseDown(e){
+		console.log("mouseDown");
+		var v = view.instance();
+		if(e.pageX < v.x + 15 + v.canvas.offsetLeft && e.pageX > v.x - 15 + v.canvas.offsetLeft 
+			&& e.pageY < v.y + 15 + v.canvas.offsetTop && e.pageY > v.y -15 + v.canvas.offsetTop){
+
+			v.x = e.pageX - v.canvas.offsetLeft;
+			v.y = e.pageY - v.canvas.offsetTop;
+			v.allow_drag = true;
+			v.canvas.onmousemove = v.mouseMove;
+			console.log(v.canvas.onmousemove)
+		}
+	}
+
+
+	mouseUp(e){
+		console.log("mouseUp");
+		var v = view.instance();
+		v.allow_drag = false;
+ 		v.canvas.onmousemove = null;
+	}
+
+
+	mouseMove(e){
+		console.log("mouseMove");
+		var v = view.instance();
+		if(v.allow_drag){
+			v.x = e.pageX - v.canvas.offsetLeft;
+			v.y = e.pageY - v.canvas.offsetTop;
+		}
+	}
+
+
+	static instance(){
+		if(view.ins == null){
+			view.ins = new view();
+			return view.ins;
+		}
+		else{
+			return view.ins;
+		}
 	}
 }	
