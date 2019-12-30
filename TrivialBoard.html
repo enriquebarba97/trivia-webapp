@@ -19,12 +19,12 @@
 <header>MESC Trivia</header>
 
 <div class="left">
-    <article>
+    <article class="game_on">
         <h1>Whose turn is it?</h1>
-        <section>XYZ</section>
+        <section id="current_player"></section>
     </article>
 
-    <article>
+    <article class="game_on">
         <h1>Roll the Dice!</h1>
         <section>
             <div class="dice_pic">
@@ -39,9 +39,40 @@
         </section>
     </article>
 
-    <article class="game_config">
+    <article class="game_config" id="game_config">
         <h1>Game Configuration</h1>
-        <section>XYZ</section>
+        <section>
+            <div id="activation">Activation</div>
+            <div id="name">Name</div>
+            <div id="type_description">Human / CPU</div>
+            <div class="player_config" id="player_config1">
+                <button class="butt activation_button" id="active1">toggle</button>
+                <input type="text" name="name" class="name_input" id="name1">
+                <input type="radio" name="config1" value="cpu" class="type_select" >
+                <input type="radio" name="config1" value="human" class="type_select" checked="checked">
+            </div>
+            <div class="player_config" id="player_config2">
+                <button class="butt activation_button" id="active2">toggle</button>
+                <input type="text" name="name" class="name_input" id="name2">
+                <input type="radio" name="config2" value="cpu" class="type_select" >
+                <input type="radio" name="config2" value="human" class="type_select" checked="checked">
+            </div>
+            <div class="player_config" id="player_config3">
+                <button class="butt activation_button" id="active3">toggle</button>
+                <input type="text" name="name" class="name_input" id="name3">
+                <input type="radio" name="config3" value="cpu" class="type_select" >
+                <input type="radio" name="config3" value="human" class="type_select" checked="checked">
+            </div>
+            <div class="player_config" id="player_config4">
+                <button class="butt activation_button" id="active4">toggle</button>
+                <input type="text" name="name" class="name_input" id="name4">
+                <input type="radio" name="config4" value="cpu" class="type_select" >
+                <input type="radio" name="config4" value="human" class="type_select" checked="checked">
+            </div>
+            <div id="start_field">
+                <button class="butt" id="start">Start Game</button>
+            </div>
+        </section>
     </article>
 </div>
 
@@ -77,6 +108,7 @@ Your browser does not support the canvas element.
 <script src="src/view.js"></script>
 <script src="src/model.js"></script>
 <script src="src/controller.js"></script>
+<script src="src/player.js"></script>
 <script src="src/main.js"></script>
 
 </body>

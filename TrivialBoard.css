@@ -63,6 +63,7 @@ article section
     display: block;
     overflow: auto;
     text-align: center;
+    padding-bottom: 5px;
 }
 
 .left
@@ -79,10 +80,6 @@ article section
     clear: both;
 }
 
-.game_config
-{
-    margin-top: 15%;
-}
 .question section
 {
     text-align: center;
@@ -137,4 +134,52 @@ article section
 .butt:active {
     position:relative;
     top:1px;
+}
+#type_description
+{
+    font-size: large;
+    float: right;
+}
+#activation
+{
+    font-size: large;
+    float: left;   
+}
+#name
+{
+    margin-left: 40px;
+    font-size: large;
+    float: left;
+}
+.player_config
+{
+    margin-top: 10%;
+    padding: 5px;
+}
+.player_tag
+{
+    float: left;
+}
+.type_select
+{
+    float: right;
+    margin-left: 50px;
+}
+#start
+{
+    margin-top: 25px;
+}
+#start_field
+{
+    clear: both;
+}
+.activation_button
+{
+    float: left;
+}
+.name_input
+{
+    margin-left:      20px;
+    background-color: Gray;
+    color:            White;
 }

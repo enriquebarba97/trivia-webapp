@@ -17,6 +17,11 @@ class view{
 		this.y = this.Ycenter;
 
 		setInterval(this.draw, 10);
+
+		var turn_and_dice = document.getElementsByClassName("game_on");
+		for (var i = 0; i < turn_and_dice.length; i++) {
+		  turn_and_dice[i].style.display = "none";
+		}
 	}
 
 

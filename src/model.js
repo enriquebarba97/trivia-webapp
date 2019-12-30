@@ -10,6 +10,13 @@ class model{
         }
 
         this.dice_value = 0;
+
+        this.player1_active = false;
+        this.player2_active = false;
+        this.player3_active = false;
+        this.player4_active = false;
+
+        this.players = [];
 	}
 
 
