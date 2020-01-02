@@ -20,6 +20,7 @@ class model{
 	}
 
 
+
     setNewDiceNumber(field)
     {
         this.dice_value = this.dice.roll();

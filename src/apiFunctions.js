@@ -3,11 +3,6 @@ var baseURL = "https://opentdb.com/";
 var token = null;
 
 
-document.getElementById("button").onclick = function(){
-    getQuestion(9);
-};
-
-
 function sessionToken(){
     var url = baseURL + "api_token.php?command=request";
     var req = new XMLHttpRequest()
@@ -111,6 +106,11 @@ function updateQuestion(data){
 
     document.getElementById("quiz").innerHTML = output.join('');
 }
+
+
+function checkAnswer(){
+}
+
 
 function nextChar(c) {
     return String.fromCharCode(c.charCodeAt(0) + 1);
