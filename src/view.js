@@ -15,8 +15,8 @@ class view{
 		this.inner_circle_radius = 195;
 		this.outer_cirlce_radius = this.inner_circle_radius + this.size;
 		
-
-		this.colors = ["black", "blue", "green", "red"];
+		this.field_colors	 = ["purple", "green", "yellow", "blue"]
+		this.player_colors = ["black", "blue", "green", "red"];
 
 		setInterval(this.draw, 10);
 
@@ -39,6 +39,31 @@ class view{
 	}
 
 
+	drawOuterFields(){
+		var ctx = this.ctx
+		var saved_color = ctx.fillStyle;
+		var angle = Math.PI / (this.numberOfSides * 4);
+
+		for(var i = 0; i < this.numberOfSides; ++i){
+			ctx.setTransform(1, 0, 0, 1, this.Xcenter + this.size * Math.cos(2 * i * angle * 4), this.Ycenter + this.size * Math.sin(2 * i * angle * 4));
+			for(var j = 0; j < 4; ++j){
+				ctx.fillStyle = this.getFieldColor(i, j);
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(this.inner_circle_radius * Math.cos(((2 * (i * 4 + j)) - 4) * angle), this.inner_circle_radius * Math.sin(((2 * (i * 4 + j)) - 4) * angle));
+				ctx.lineTo(this.inner_circle_radius * Math.cos(((2 * (i * 4 + j)) - 2) * angle), this.inner_circle_radius * Math.sin(((2 * (i * 4 + j)) - 2) * angle));
+				
+				ctx.closePath();
+				ctx.fill()
+				ctx.stroke();
+			}
+		}
+
+		ctx.resetTransform();
+		ctx.fillStyle = saved_color;
+	}
+
+
 	drawHexagon(){
 		var ctx = this.ctx
 		ctx.beginPath();
@@ -54,19 +79,24 @@ class view{
 	drawSegments(){
 		var ctx = this.ctx
 		var angle = Math.PI / this.numberOfSides;
-		var segment_length = this.size * 3;
-		for(var i = 0; i < this.numberOfSides; ++i){
-			ctx.beginPath();
-			ctx.setTransform(1, 0, 0, 1, this.Xcenter + this.size * Math.cos(2 * i * angle), this.Ycenter + this.size * Math.sin(2 * i * angle));
-			ctx.moveTo(0, 0)
-			ctx.lineTo(segment_length * Math.cos(((2 * i) + 1) * angle), segment_length * Math.sin(((2 * i) + 1) * angle))
-			ctx.setTransform(1, 0, 0, 1, this.Xcenter + this.size * Math.cos(((2 * i) + 2) * angle), this.Ycenter + this.size * Math.sin(((2 * i) + 2) * angle));
-			ctx.lineTo(segment_length * Math.cos(((2 * i) + 1) * angle), segment_length * Math.sin(((2 * i) + 1) * angle))
-			ctx.lineTo(0, 0)
-			ctx.closePath();
-			ctx.fill()
-			ctx.stroke();
+		for(var length = 4; length > 0; length--){
+			ctx.fillStyle = this.getFieldColor();
+			var segment_length = this.size * length;
+			for(var i = 0; i < this.numberOfSides; ++i){
+				ctx.fillStyle = this.getFieldColor(i, length);
+				ctx.setTransform(1, 0, 0, 1, this.Xcenter + this.size * Math.cos(2 * i * angle), this.Ycenter + this.size * Math.sin(2 * i * angle));
+				ctx.beginPath();
+				ctx.moveTo(0, 0);
+				ctx.lineTo(segment_length * Math.cos(((2 * i) + 1) * angle), segment_length * Math.sin(((2 * i) + 1) * angle));
+				ctx.setTransform(1, 0, 0, 1, this.Xcenter + this.size * Math.cos(((2 * i) + 2) * angle), this.Ycenter + this.size * Math.sin(((2 * i) + 2) * angle));
+				ctx.lineTo(segment_length * Math.cos(((2 * i) + 1) * angle), segment_length * Math.sin(((2 * i) + 1) * angle));
+				ctx.lineTo(0, 0);
+				ctx.closePath();
+				ctx.fill();
+				ctx.stroke();
+			}
 		}
+
 	}
 
 
@@ -87,16 +117,24 @@ class view{
 		var v = view.instance();
 		var ctx = v.ctx
 		ctx.resetTransform();
+
 		ctx.fillStyle = "#4d4d4d";
 		ctx.fillRect(0, 0, v.canvas.width, v.canvas.height);
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "black";
 		ctx.lineWidth = 3;
 		v.drawCircle(v.outer_cirlce_radius, "white");
+		v.drawOuterFields();
 		v.drawCircle(v.inner_circle_radius, "#4d4d4d");
 		v.drawHexagon();
 		v.drawSegments();
 		v.drawPlayers();
+	}
+
+
+	getFieldColor(offset, index){
+		var i = (offset + index) % 4;
+		return this.field_colors[i];
 	}
 
 

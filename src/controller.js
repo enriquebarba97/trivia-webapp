@@ -3,7 +3,6 @@ class controller{
 	constructor(){
         var _this = this;
 
-        this.current_player = null;
         document.getElementById("dice_number").innerHTML = "0";
 
         model.instance().player1_active = false;
@@ -119,7 +118,7 @@ class controller{
                 if(radioButtons[0].checked){
                 	cpu = true;
                 }
-                model.instance().players.push(new player(counter, name, cpu, view.instance().colors[i], number_of_players))
+                model.instance().players.push(new player(counter, name, cpu, view.instance().player_colors[i], number_of_players))
                 counter = counter + 1;
             };
         }
