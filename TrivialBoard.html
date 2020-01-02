@@ -100,8 +100,26 @@ Your browser does not support the canvas element.
     <article class="question">
         <h2>QUESTION</h2>
         <section>
+            <div id="category_picker">
+                <div class="category_radio">
+                    <label for="category1">Animals</label><br/>
+                    <input type="radio" name="category" value="true" id="category1" checked="checked">
+                </div>
+                <div class="category_radio">
+                    <label for="category2">Geography</label><br/>
+                    <input type="radio" name="category" value="true" id="category2" >
+                </div>
+                <div class="category_radio">
+                    <label for="category3">History</label><br/>
+                    <input type="radio" name="category" value="true" id="category3" >
+                </div>
+                <div class="category_radio">
+                    <label for="category4">Sports</label><br/>
+                    <input type="radio" name="category" value="true" id="category4" >
+                </div>
+            </div>
             <button class="butt" id="new_question_button">New Question</button>
-            <div id="quiz"></div>
+            <div id="text_question"></div>
             <button class="butt" id="check_answer_button">Check Answer</button>
         </section>
     </article>

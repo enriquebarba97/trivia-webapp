@@ -86,9 +86,11 @@ article section
     padding-bottom: 1%;
 }
 
-#quiz
+#text_question
 {
-    font-size: large;
+    font-size:      large;
+    margin-top:     10px;
+    margin-bottom:  10px;
 }
 
 .dice_pic
@@ -244,4 +246,31 @@ article section
     float: left;
     display: block;
     margin-top: 10px;
+}
+
+#category_picker
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.category_radio
+{
+    display: inline-block;
+    margin-left: 5px;
+}
+#category1
+{
+    background-color:   #4dff4d;
+}
+#category2
+{
+    background-color:   #3385ff;
+}
+#category3
+{
+    background-color:   #ffff66;   
+}
+#category4
+{
+    background-color:   #ff3333;
 }

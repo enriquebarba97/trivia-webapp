@@ -104,7 +104,7 @@ function updateQuestion(data){
         <div class="answers"> ${answers.join('')} </div>`
       );
 
-    document.getElementById("quiz").innerHTML = output.join('');
+    document.getElementById("text_question").innerHTML = output.join('');
 }
 
 
