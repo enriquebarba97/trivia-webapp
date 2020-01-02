@@ -40,16 +40,16 @@ class view{
 	drawOuterFields(){
 		var ctx = this.ctx
 		var saved_color = ctx.fillStyle;
-		var angle = Math.PI / (this.numberOfSides * 4);
+		var angle = Math.PI / (this.numberOfSides * 5);
 		ctx.setTransform(1, 0, 0, 1, this.Xcenter, this.Ycenter);
 		for(var i = 0; i < this.numberOfSides; ++i){
 			
-			for(var j = 0; j < 4; ++j){
+			for(var j = 0; j < 5; ++j){
 				ctx.fillStyle = this.getFieldColor(i, j);
 				ctx.beginPath();
 				ctx.moveTo(0, 0);
-				ctx.lineTo(this.outer_cirlce_radius * Math.cos(((2 * (i * 4 + j)) - 4) * angle), this.outer_cirlce_radius * Math.sin(((2 * (i * 4 + j)) - 4) * angle));
-				ctx.lineTo(this.outer_cirlce_radius * Math.cos(((2 * (i * 4 + j)) - 2) * angle), this.outer_cirlce_radius * Math.sin(((2 * (i * 4 + j)) - 2) * angle));
+				ctx.lineTo(this.outer_cirlce_radius * Math.cos(((2 * (i * 5 + j)) - 4) * angle), this.outer_cirlce_radius * Math.sin(((2 * (i * 5 + j)) - 4) * angle));
+				ctx.lineTo(this.outer_cirlce_radius * Math.cos(((2 * (i * 5 + j)) - 2) * angle), this.outer_cirlce_radius * Math.sin(((2 * (i * 5 + j)) - 2) * angle));
 				
 				ctx.closePath();
 				ctx.fill()
