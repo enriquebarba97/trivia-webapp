@@ -119,7 +119,9 @@ class controller{
                 if(radioButtons[0].checked){
                 	cpu = true;
                 }
-                m.players.push(new player(counter, name, cpu, view.instance().colors[i], number_of_players))
+
+                model.instance().players.push(new player(counter, name, cpu, view.instance().player_colors[i], number_of_players))
+
                 counter = counter + 1;
             };
         }

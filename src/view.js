@@ -15,9 +15,9 @@ class view{
 		this.inner_circle_radius = 195;
 		this.outer_cirlce_radius = this.inner_circle_radius + this.size;
 		
-		this.field_colors	 = ["purple", "green", "yellow", "blue"]
+		this.field_colors = ["purple", "green", "yellow", "blue"]
 		this.player_colors = ["black", "blue", "green", "red"];
-		
+
 		setInterval(this.draw, 10);
 
 		var turn_and_dice = document.getElementsByClassName("game_on");
