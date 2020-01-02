@@ -7,6 +7,7 @@ class view{
 		this.ctx = this.canvas.getContext("2d");
 
 		this.player_size = 15;
+		this.border_size = 2;	
 		this.Xcenter = 370;
 		this.Ycenter = 250;
 		this.size = 50;
@@ -43,15 +44,15 @@ class view{
 		var ctx = this.ctx
 		var saved_color = ctx.fillStyle;
 		var angle = Math.PI / (this.numberOfSides * 4);
-
+		ctx.setTransform(1, 0, 0, 1, this.Xcenter, this.Ycenter);
 		for(var i = 0; i < this.numberOfSides; ++i){
-			ctx.setTransform(1, 0, 0, 1, this.Xcenter + this.size * Math.cos(2 * i * angle * 4), this.Ycenter + this.size * Math.sin(2 * i * angle * 4));
+			
 			for(var j = 0; j < 4; ++j){
 				ctx.fillStyle = this.getFieldColor(i, j);
 				ctx.beginPath();
 				ctx.moveTo(0, 0);
-				ctx.lineTo(this.inner_circle_radius * Math.cos(((2 * (i * 4 + j)) - 4) * angle), this.inner_circle_radius * Math.sin(((2 * (i * 4 + j)) - 4) * angle));
-				ctx.lineTo(this.inner_circle_radius * Math.cos(((2 * (i * 4 + j)) - 2) * angle), this.inner_circle_radius * Math.sin(((2 * (i * 4 + j)) - 2) * angle));
+				ctx.lineTo(this.outer_cirlce_radius * Math.cos(((2 * (i * 4 + j)) - 4) * angle), this.outer_cirlce_radius * Math.sin(((2 * (i * 4 + j)) - 4) * angle));
+				ctx.lineTo(this.outer_cirlce_radius * Math.cos(((2 * (i * 4 + j)) - 2) * angle), this.outer_cirlce_radius * Math.sin(((2 * (i * 4 + j)) - 2) * angle));
 				
 				ctx.closePath();
 				ctx.fill()
@@ -102,8 +103,14 @@ class view{
 
 	drawPlayers(){
 		var ctx = this.ctx;
+		var border = this.border_size;
 		ctx.resetTransform();
 		for(player of model.instance().players){
+			ctx.fillStyle = "black";
+			ctx.beginPath();
+			ctx.rect(player.x - this.player_size - border, player.y - this.player_size - border, this.player_size * 2 + 2 * border, this.player_size * 2 + 2 * border);
+			ctx.closePath();
+			ctx.fill();
 			ctx.fillStyle = player.color;
 			ctx.beginPath();
 			ctx.rect(player.x - this.player_size, player.y - this.player_size, this.player_size * 2, this.player_size * 2);
