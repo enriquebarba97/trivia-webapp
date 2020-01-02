@@ -167,7 +167,6 @@ class controller{
 
             document.getElementById("score_sheet").appendChild(newPlayer);
         }
-        document.getElementById("score_sheet")
 
         view.instance().turnGameModeOn();
     }

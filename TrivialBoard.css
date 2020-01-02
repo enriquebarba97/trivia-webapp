@@ -251,6 +251,9 @@ article section
     display: block;
     margin-top: 10px;
 }
+.player_score{
+    padding: 15px;
+}
 
 #category_picker
 {

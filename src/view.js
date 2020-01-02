@@ -174,8 +174,6 @@ class view{
 
 	turnGameModeOff()
 	{
-		document.getElementById("myCanvas").style.cssFloat = "right";
-
 		var turn_and_dice = document.getElementsByClassName("game_on");
 		for (var i = 0; i < turn_and_dice.length; i++) {
 		  turn_and_dice[i].style.display = "none";
@@ -194,8 +192,6 @@ class view{
 
 	turnGameModeOn()
 	{
-		document.getElementById("myCanvas").style.cssFloat = "none";
-
 		var turn_and_dice = document.getElementsByClassName("game_on");
 		for (var i = 0; i < turn_and_dice.length; i++) {
 		  turn_and_dice[i].style.display = "block";
