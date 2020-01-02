@@ -99,7 +99,8 @@ class controller{
     start()
     {
         console.log("start");
-        var activations = [model.instance().player1_active, model.instance().player2_active, model.instance().player3_active, model.instance().player4_active];
+        var m = model.instance();
+        var activations = [m.player1_active, m.player2_active, m.player3_active, m.player4_active];
         var counter = 1;
 
         var number_of_players = 0;
@@ -118,15 +119,51 @@ class controller{
                 if(radioButtons[0].checked){
                 	cpu = true;
                 }
-                model.instance().players.push(new player(counter, name, cpu, view.instance().player_colors[i], number_of_players))
+                m.players.push(new player(counter, name, cpu, view.instance().colors[i], number_of_players))
                 counter = counter + 1;
             };
         }
 
-        model.instance().current_player = model.instance().players[0];
-        document.getElementById("current_player").innerHTML = "Player " + model.instance().current_player.number.toString() + ": " + model.instance().current_player.name;
+        m.current_player = m.players[0];
+        document.getElementById("current_player").innerHTML = "Player " + m.current_player.number.toString() + ": " + m.current_player.name;
+        document.getElementById("color_indicator").style.backgroundColor = m.current_player.color;
 
         document.getElementById("game_config").style.display = "none";
+
+        for(var play of m.players)
+        {
+            var newPlayer = document.createElement("div");
+            var red       = document.createElement("div");
+            var yellow    = document.createElement("div");
+            var blue      = document.createElement("div");
+            var green     = document.createElement("div");
+            var name      = document.createElement("div");
+
+            newPlayer.className = "player_score";
+            name.className      = "score_name";
+
+            red.className       = "red";
+            yellow.className    = "yellow";
+            blue.className      = "blue";
+            green.className     = "green";
+
+            red.id          = "red_" + play.number.toString();
+            yellow.id       = "yellow_" + play.number.toString();
+            blue.id         = "blue_" + play.number.toString();
+            green.id        = "green_" + play.number.toString();
+
+            var text_name = document.createTextNode("Player " + play.number.toString() + ": " + play.name);
+            name.appendChild(text_name);
+
+            newPlayer.appendChild(name);
+            newPlayer.appendChild(red);
+            newPlayer.appendChild(yellow);
+            newPlayer.appendChild(blue);
+            newPlayer.appendChild(green);
+
+            document.getElementById("score_sheet").appendChild(newPlayer);
+        }
+        document.getElementById("score_sheet")
 
         var turn_and_dice = document.getElementsByClassName("game_on");
         for (var i = 0; i < turn_and_dice.length; i++) {
@@ -150,6 +187,7 @@ class controller{
 			}
 		}
 		document.getElementById("current_player").innerHTML = "Player " + m.current_player.number.toString() + ": " + m.current_player.name;
+        document.getElementById("color_indicator").style.backgroundColor = m.current_player.color;
 	}
 
 

@@ -183,3 +183,65 @@ article section
     background-color: Gray;
     color:            White;
 }
+
+#color_indicator {
+    display:            block;
+    margin-top:         8px;
+    margin-left:        auto;
+    margin-right:       auto;
+    width:              20px;
+    height:             20px;
+    background-color:   white;
+    border:             1px solid #dddddd;
+}
+
+.red
+{
+    margin-left:        3px;
+    margin-top:         12px;
+    border-radius:      50%;
+    float:              right;
+    display:            block;
+    width:              12px;
+    height:             12px;
+    border:             1px solid #ff3333;
+}
+.blue
+{
+    margin-left:        3px;
+    margin-top:         12px;
+    border-radius:      50%;
+    float:              right;
+    display:            block;
+    width:              12px;
+    height:             12px;
+    border:             1px solid #3385ff;
+}
+.yellow
+{
+    margin-left:        3px;
+    margin-top:         12px;
+    border-radius:      50%;
+    float:              right;
+    display:            block;
+    width:              12px;
+    height:             12px;
+    border:             1px solid #ffff66;
+}
+.green
+{
+    margin-left:        3px;
+    margin-top:         12px;
+    border-radius:      50%;
+    float:              right;
+    display:            block;
+    width:              12px;
+    height:             12px;
+    border:             1px solid #4dff4d;
+}
+.score_name
+{
+    float: left;
+    display: block;
+    margin-top: 10px;
+}

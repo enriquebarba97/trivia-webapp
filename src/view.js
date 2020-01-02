@@ -15,8 +15,13 @@ class view{
 		this.inner_circle_radius = 195;
 		this.outer_cirlce_radius = this.inner_circle_radius + this.size;
 		
+<<<<<<< HEAD
 		this.field_colors	 = ["purple", "green", "yellow", "blue"]
 		this.player_colors = ["black", "blue", "green", "red"];
+=======
+
+		this.colors = ["red", "blue", "green", "yellow"];
+>>>>>>> 685c8623757830a20d36d0b50505ee7920c096e3
 
 		setInterval(this.draw, 10);
 
