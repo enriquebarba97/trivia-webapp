@@ -18,6 +18,7 @@ header
 canvas 
 {
     padding:        0;
+    position:       absolute;
     margin:         auto;
     display:        block;
     top:            0;
@@ -54,6 +55,7 @@ article h1
 
 article h2
 {
+    margin: 0;
     text-align: center;
     size: 20;
 }
@@ -76,14 +78,15 @@ article section
 }
 .bottom
 {
-    margin-top: 2%;
-    clear: both;
+    margin-top: 600px;
+    text-align: center;
+    clear:      both;
 }
 
 .question section
 {
     text-align: center;
-    padding-bottom: 1%;
+    padding-bottom: 0.1%;
 }
 
 #text_question
@@ -155,8 +158,9 @@ article section
 }
 .player_config
 {
-    margin-top: 10%;
-    padding: 5px;
+    margin-top:     2%;
+    padding:        7px;
+    border:         1px solid #4d4d4d;
 }
 .player_tag
 {
@@ -252,25 +256,143 @@ article section
 {
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#category_radio_first
+{
+    display: inline-block;
+    font-size:      large;
 }
 .category_radio
 {
-    display: inline-block;
-    margin-left: 5px;
+    display:        inline-block;
+    margin-left:    3%;
+    font-size:      large;
+}
+#radio_background1
+{
+    border-radius:      50%;
+    width:              30px;
+    height:             30px;
+
+    margin-top:         7px;
+    margin-left:        auto;
+    margin-right:       auto;
+    background-color:   #4dff4d;
+    border:             1px solid #000000;
+    position: relative;
+}
+#radio_background2
+{
+    border-radius:      50%;
+    width:              30px;
+    height:             30px;
+    margin-top:         7px;
+    margin-left:        auto;
+    margin-right:       auto;
+    background-color:   #3385ff;
+    border:             1px solid #000000;
+    position: relative;
+}
+#radio_background3
+{
+    border-radius:      50%;
+    width:              30px;
+    height:             30px;
+    margin-top:         7px;
+    margin-left:        auto;
+    margin-right:       auto;
+    background-color:   #ffff66;
+    border:             1px solid #000000;
+    position: relative;
+}
+#radio_background4
+{
+    border-radius:      50%;
+    width:              30px;
+    height:             30px;
+    margin-top:         7px;
+    margin-left:        auto;
+    margin-right:       auto;
+    background-color:   #ff3333;
+    border:             1px solid #000000;
+    position: relative;
+}
+
+#game_config_top
+{
+    margin-bottom: 14%;
 }
 #category1
 {
-    background-color:   #4dff4d;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 #category2
 {
-    background-color:   #3385ff;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 #category3
 {
-    background-color:   #ffff66;   
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 #category4
 {
-    background-color:   #ff3333;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#new_question_button
+{
+    float: left;
+    padding: 50px 8px;
+    margin-left: 5%;
+}
+#check_answer_button
+{
+    float: right;
+    padding: 50px 8px;
+    margin-right: 5%;
+}
+
+.answer_box
+{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color:#ffffff;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    color:#000000;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+    padding: 6px;
+    margin-left: 20px;
+}
+.answers
+{
+    margin-top: 10px;
 }

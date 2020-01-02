@@ -46,9 +46,11 @@
     <article class="game_config" id="game_config">
         <h1>Game Configuration</h1>
         <section>
-            <div id="activation">Activation</div>
-            <div id="name">Name</div>
-            <div id="type_description">Human / CPU</div>
+            <div id="game_config_top">
+                <div id="activation">Activation</div>
+                <div id="name">Name</div>
+                <div id="type_description">Human / CPU</div>
+            </div>
             <div class="player_config" id="player_config1">
                 <button class="butt activation_button" id="active1">toggle</button>
                 <input type="text" name="name" class="name_input" id="name1">
@@ -100,27 +102,37 @@ Your browser does not support the canvas element.
     <article class="question">
         <h2>QUESTION</h2>
         <section>
+            <button class="butt" id="new_question_button">New Question</button>
+            <button class="butt" id="check_answer_button">Check Answer</button>
             <div id="category_picker">
-                <div class="category_radio">
+                <div id="category_radio_first">
                     <label for="category1">Animals</label><br/>
-                    <input type="radio" name="category" value="true" id="category1" checked="checked">
+                    <div id="radio_background1">
+                        <input type="radio" name="category" value="true" id="category1" checked="checked">
+                    </div>
                 </div>
                 <div class="category_radio">
                     <label for="category2">Geography</label><br/>
-                    <input type="radio" name="category" value="true" id="category2" >
+                    <div id="radio_background2">
+                        <input type="radio" name="category" value="true" id="category2" >
+                    </div>
                 </div>
                 <div class="category_radio">
                     <label for="category3">History</label><br/>
-                    <input type="radio" name="category" value="true" id="category3" >
+                    <div id="radio_background3">
+                        <input type="radio" name="category" value="true" id="category3" >
+                    </div>
                 </div>
                 <div class="category_radio">
                     <label for="category4">Sports</label><br/>
-                    <input type="radio" name="category" value="true" id="category4" >
+                    <div id="radio_background4">
+                        <input type="radio" name="category" value="true" id="category4" >
+                    </div>
                 </div>
             </div>
-            <button class="butt" id="new_question_button">New Question</button>
+            
             <div id="text_question"></div>
-            <button class="butt" id="check_answer_button">Check Answer</button>
+            
         </section>
     </article>
 </div>

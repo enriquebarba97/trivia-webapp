@@ -73,7 +73,8 @@ class controller{
                   break;
                 default:
             } 
-            document.getElementById("player_config" + number.toString()).style.backgroundColor = "#4d4d4d";           
+            document.getElementById("player_config" + number.toString()).style.backgroundColor = "#4d4d4d";
+            document.getElementById("player_config" + number.toString()).style.border = "1px solid #4d4d4d";
         }
         else
         {
@@ -92,7 +93,8 @@ class controller{
                   break;
                 default:
             }
-            document.getElementById("player_config" + number.toString()).style.backgroundColor = "green";
+            document.getElementById("player_config" + number.toString()).style.backgroundColor = "green"
+            document.getElementById("player_config" + number.toString()).style.border = "1px solid #000000";
         }
     }
 
@@ -167,10 +169,7 @@ class controller{
         }
         document.getElementById("score_sheet")
 
-        var turn_and_dice = document.getElementsByClassName("game_on");
-        for (var i = 0; i < turn_and_dice.length; i++) {
-          turn_and_dice[i].style.display = "block";
-        }
+        view.instance().turnGameModeOn();
     }
 
 

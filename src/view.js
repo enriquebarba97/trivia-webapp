@@ -16,15 +16,12 @@ class view{
 		this.inner_circle_radius = 195;
 		this.outer_cirlce_radius = this.inner_circle_radius + this.size;
 		
-		this.field_colors = ["purple", "green", "yellow", "blue"]
-		this.player_colors = ["red", "blue", "green", "yellow"];
+		this.field_colors = ["#4dff4d", "#3385ff", "#ffff66", "#ff333e"]
+		this.player_colors = ["red", "blue", "green", "#ff6600"];
 
 		setInterval(this.draw, 10);
 
-		var turn_and_dice = document.getElementsByClassName("game_on");
-		for (var i = 0; i < turn_and_dice.length; i++) {
-		  turn_and_dice[i].style.display = "none";
-		}
+		this.turnGameModeOff();
 	}
 
 
@@ -72,6 +69,7 @@ class view{
 		for (var i = 1; i <= this.numberOfSides;i += 1) {
 		  ctx.lineTo (this.Xcenter + this.size * Math.cos(i * 2 * Math.PI / this.numberOfSides), this.Ycenter + this.size * Math.sin(i * 2 * Math.PI / this.numberOfSides));
 		}
+		ctx.fillStyle = "#5353ac";
 		ctx.fill();
 		ctx.stroke();
 	}
@@ -171,6 +169,46 @@ class view{
 		if(v.allow_drag){
 			cp.x = e.pageX - v.canvas.offsetLeft;
 			cp.y = e.pageY - v.canvas.offsetTop;
+		}
+	}
+
+	turnGameModeOff()
+	{
+		document.getElementById("myCanvas").style.cssFloat = "right";
+
+		var turn_and_dice = document.getElementsByClassName("game_on");
+		for (var i = 0; i < turn_and_dice.length; i++) {
+		  turn_and_dice[i].style.display = "none";
+		}
+
+		var right = document.getElementsByClassName("right");
+		for (var i = 0; i < right.length; i++) {
+		  right[i].style.display = "none";
+		}
+
+		var bot = document.getElementsByClassName("bottom");
+		for (var i = 0; i < bot.length; i++) {
+		  bot[i].style.display = "none";
+		}
+	}
+
+	turnGameModeOn()
+	{
+		document.getElementById("myCanvas").style.cssFloat = "none";
+
+		var turn_and_dice = document.getElementsByClassName("game_on");
+		for (var i = 0; i < turn_and_dice.length; i++) {
+		  turn_and_dice[i].style.display = "block";
+		}
+
+		var right = document.getElementsByClassName("right");
+		for (var i = 0; i < right.length; i++) {
+		  right[i].style.display = "block";
+		}
+
+		var bot = document.getElementsByClassName("bottom");
+		for (var i = 0; i < bot.length; i++) {
+		  bot[i].style.display = "block";
 		}
 	}
 
