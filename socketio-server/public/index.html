@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>MESC Trivia</title>
+
+<link rel="icon" href="img/icon.jpg">
+
+<link rel = "stylesheet"
+    type = "text/css"
+    href = "TrivialBoard.css" />
+
+<meta charset="UTF-8">
+
+</head>
+
+<body>
+
+<header>MESC Trivia</header>
+
+<div class="left">
+    <article class="game_on">
+        <h1>Whose turn is it?</h1>
+        <section>
+            <div id="current_player"></div>
+            <div id="color_indicator"></div>
+        </section>
+        
+    </article>
+
+    <article class="game_on">
+        <h1>Roll the Dice!</h1>
+        <section>
+            <div class="dice_pic">
+                <img src="img/dice.png" width="70px">
+            </div>
+            <div id="dice_number">
+                
+            </div>
+            <div class="dice_button">
+                <button class="butt" id="roll">ROLL</button>
+            </div>
+        </section>
+    </article>
+
+    <article class="game_config" id="game_config">
+        <h1>Game Configuration</h1>
+        <section>
+            <div id="game_config_top">
+                <div id="activation">Activation</div>
+                <div id="name">Name</div>
+                <div id="type_description">Human / CPU</div>
+            </div>
+            <div class="player_config" id="player_config1">
+                <button class="butt activation_button" id="active1">toggle</button>
+                <input type="text" name="name" class="name_input" id="name1">
+                <input type="radio" name="config1" value="cpu" class="type_select" >
+                <input type="radio" name="config1" value="human" class="type_select" checked="checked">
+            </div>
+            <div class="player_config" id="player_config2">
+                <button class="butt activation_button" id="active2">toggle</button>
+                <input type="text" name="name" class="name_input" id="name2">
+                <input type="radio" name="config2" value="cpu" class="type_select" >
+                <input type="radio" name="config2" value="human" class="type_select" checked="checked">
+            </div>
+            <div class="player_config" id="player_config3">
+                <button class="butt activation_button" id="active3">toggle</button>
+                <input type="text" name="name" class="name_input" id="name3">
+                <input type="radio" name="config3" value="cpu" class="type_select" >
+                <input type="radio" name="config3" value="human" class="type_select" checked="checked">
+            </div>
+            <div class="player_config" id="player_config4">
+                <button class="butt activation_button" id="active4">toggle</button>
+                <input type="text" name="name" class="name_input" id="name4">
+                <input type="radio" name="config4" value="cpu" class="type_select" >
+                <input type="radio" name="config4" value="human" class="type_select" checked="checked">
+            </div>
+            <div id="spacer"></div>
+            <div id="doc_div">
+                <button id="doc" class="butt">Documentation</button>
+            </div>
+            <div id="start_field">
+                <button class="butt" id="start">Start Game</button>
+            </div>
+        </section>
+    </article>
+</div>
+
+<div class="right">
+    <article id="score">
+        <h1>Score</h1>
+        <section id="score_sheet"></section>
+    </article>
+
+    <article id="qh">
+        <h1>Question History</h1>
+        <section id="q_history">
+            
+        </section>
+    </article>
+</div>
+
+<canvas id="myCanvas" width="740" height="500">
+Your browser does not support the canvas element.
+</canvas>
+
+<div class="bottom">
+    <article class="question">
+        <h2>QUESTION</h2>
+        <section>
+            <button class="butt" id="new_question_button">New Question</button>
+            <button class="butt" id="check_answer_button">Check Answer</button>
+            <div id="category_picker">
+                <div id="category_radio_first">
+                    <label for="category1">Animals</label><br/>
+                    <div id="radio_background1">
+                        <input type="radio" name="category" value=27 id="category1">
+                    </div>
+                </div>
+                <div class="category_radio">
+                    <label for="category2">Geography</label><br/>
+                    <div id="radio_background2">
+                        <input type="radio" name="category" value=22 id="category2" >
+                    </div>
+                </div>
+                <div class="category_radio">
+                    <label for="category3">History</label><br/>
+                    <div id="radio_background3">
+                        <input type="radio" name="category" value=23 id="category3" >
+                    </div>
+                </div>
+                <div class="category_radio">
+                    <label for="category4">Sports</label><br/>
+                    <div id="radio_background4">
+                        <input type="radio" name="category" value=21 id="category4" >
+                    </div>
+                </div>
+            </div>
+            
+            <div id="text_question"></div>
+            
+        </section>
+    </article>
+</div>
+
+<!-- Include all js files -->
+<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+<script src="online.js" charset="utf-8"></script>
+<script src="src/doc.js"></script>
+<script src="src/view.js"></script>
+<script src="src/model.js"></script>
+<script src="src/controller.js"></script>
+<script src="src/player.js"></script>
+<script src="src/main.js"></script>
+
+</body>
+</html>
