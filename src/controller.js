@@ -1,8 +1,6 @@
 class controller{
 	instance_ = null;
 	constructor(){
-        var _this = this;
-
         document.getElementById("dice_number").innerHTML = "0";
 
         model.instance().player1_active = false;
@@ -38,27 +36,29 @@ class controller{
             controller.instance().checkAnswerButtonClicked();
 		};
 
-        document.getElementById("start").addEventListener('click', _this.start)
+        document.getElementById("start").onclick = function(){
+        	controller.instance().start();
+        };
 	}
 
     newQuestionButtonClicked()
     {
-        var _this = this;
+        var c = controller.instance();
         var category_buttons = document.getElementsByName("category");
-        _this.desired_category = 0;
+        c.desired_category = 0;
         for(var cat of category_buttons)
         {
             if (cat.checked) 
             {
-                _this.desired_category = parseInt(cat.value);
+                c.desired_category = parseInt(cat.value);
             }
         }
-        if (_this.desired_category == 0)
+        if (c.desired_category == 0)
         {
             alert("No Category Selected!");
             return;
         }
-        model.instance().getQuestion(_this.desired_category);
+        model.instance().getQuestion(c.desired_category);
         if(model.instance().current_player.cpu){
             window.setTimeout(controller.instance().cpuTurn, 2000);
         }
@@ -66,8 +66,8 @@ class controller{
 
     checkAnswerButtonClicked()
     {
-        var _this = this;
-        var check = _this.sanityCheck();
+        var c = controller.instance();
+        var check = c.sanityCheck();
         if (check == false) {return;}
 
         var correct = model.instance().checkAnswer();
@@ -77,7 +77,7 @@ class controller{
         view.instance().uncheckCategories();
         view.instance().clearQuestion();
         
-        var win = _this.checkScore()
+        var win = c.checkScore()
         if (win) {
             alert("Player " + model.instance().current_player.number + ": " + model.instance().current_player.name + " has won! Congratulations!");
             window.setTimeout(view.instance().reset, 1000);

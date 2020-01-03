@@ -29,14 +29,14 @@ class model{
 		this.token = null;
         
         localStorage.clear();
-        //if(localStorage.questions === undefined){
+        if(localStorage.questions === undefined){
         	console.log("Fetching Questions");
 	        for(var category of this.categories){
 	        	for(var i = 0; i < this.max_questions; i++){
 		        	this.fetchQuestion(category);    
 	        	} 	
 	        }
-        //}
+        }
 	}
 
 
