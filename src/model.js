@@ -67,7 +67,7 @@ class model{
 	//       32, "Entertainment: Cartoon & Animations"
 	fetchQuestion(category){
 	    if(this.token == null){
-	    	sessionToken();
+	    	this.sessionToken();
 	    }
 	    
 	    var url = this.baseURL + "api.php?amount=1&type=multiple&category=" + category;
@@ -139,7 +139,7 @@ class model{
 	                </label>`);
 	            j++;
 	        }
-	        letter = nextChar(letter);
+	        letter = this.nextChar(letter);
 	    }
 
 	    output.push(
@@ -150,6 +150,45 @@ class model{
 	    document.getElementById("text_question").innerHTML = output.join('');
 
 		return result;
+	}
+
+
+	checkAnswer(){
+	    var answers = document.getElementsByName("answer");
+	    for(var a of answers)
+	    {
+	        if (a.checked && a.value == "correct") {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+
+	sessionToken(){
+	    var url = this.baseURL + "api_token.php?command=request";
+	    var req = new XMLHttpRequest()
+	    req.onreadystatechange = function(){
+	        if(req.readyState==4){
+	            if(req.status==200){
+	                var response = JSON.parse(req.responseText);
+	                if(response.response_code == 0){
+	                    this.token = response.token;
+	                }else{
+	                    alert("Server error: " + response.response_message);
+	                }
+	            }else{
+	                alert("Server error: " + response.response_message);
+	            }
+	        }
+	    }
+	    req.open("get", url, true);
+	    req.send(null);
+	}
+
+
+	nextChar(c){
+	    return String.fromCharCode(c.charCodeAt(0) + 1);
 	}
 
 
