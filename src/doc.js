@@ -1,6 +1,7 @@
-###########################################################
+var documentation = `
+#######################################
 #-----------------------Documentation---------------------#
-###########################################################
+#######################################
 
 
 How To Play
@@ -35,8 +36,9 @@ Technologies Used
 
 # Drag and Drop to move game pieces
 
-# Web Storage to store questions and answers
-(otherwise fetching questions would take 1-2 seconds 
-everytime)
+# Web Storage to store questions in local storage and 
+answers (otherwise fetching questions would take 1-2
+seconds every time)
 
 # WebSockets to play online
+`;

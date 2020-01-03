@@ -173,11 +173,11 @@ article section
 }
 #start
 {
-    margin-top: 25px;
+    //margin-top: 25px;
 }
 #start_field
 {
-    clear: both;
+    float: right;
 }
 .activation_button
 {
@@ -401,7 +401,7 @@ article section
 }
 .qh_question_true
 {
-    font-size:          xx-small;
+    font-size:          small;
     margin-bottom:      2px;
     padding:            4px;
     border:             1px solid #000000;
@@ -415,13 +415,19 @@ article section
     border:             1px solid #000000;
     background-color:   #c63939;
 }
-#qh
-{
-    
-}
 #q_history
 {
     overflow-y:     scroll;
     max-width:      300px;
     max-height:     280px;
+}
+
+#doc_div
+{
+    float: left;
+}
+#spacer
+{
+    margin-top: 25px;
+    clear: both;
 }

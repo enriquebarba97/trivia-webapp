@@ -40,8 +40,17 @@ class controller{
         	controller.instance().start();
         };
 
+        document.getElementById("doc").onclick = function() {
+            controller.instance().showDoc();
+        }
+
         this.question_history_counter = 1;
 	}
+
+    showDoc()
+    {
+        alert(documentation);
+    }
 
     newQuestionButtonClicked()
     {
