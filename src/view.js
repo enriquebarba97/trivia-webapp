@@ -146,6 +146,9 @@ class view{
 	mouseDown(e){
 		var v = view.instance();
 		var cp = model.instance().current_player;
+		if(cp === undefined){
+			return;
+		}
 		if(e.pageX < cp.x + v.player_size + v.canvas.offsetLeft && e.pageX > cp.x - v.player_size + v.canvas.offsetLeft 
 			&& e.pageY < cp.y + v.player_size + v.canvas.offsetTop && e.pageY > cp.y -v.player_size + v.canvas.offsetTop){
 			cp.x = e.pageX - v.canvas.offsetLeft;

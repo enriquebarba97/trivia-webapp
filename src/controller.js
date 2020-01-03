@@ -1,8 +1,6 @@
 class controller{
 	instance_ = null;
 	constructor(){
-        var _this = this;
-
         document.getElementById("dice_number").innerHTML = "0";
 
         model.instance().player1_active = false;
@@ -38,28 +36,29 @@ class controller{
             controller.instance().checkAnswerButtonClicked();
 		};
 
-        document.getElementById("start").addEventListener('click', _this.start)
+        document.getElementById("start").onclick = function(){
+        	controller.instance().start();
+        };
 	}
 
     newQuestionButtonClicked()
     {
-        var _this = this;
+        var c = controller.instance();
         var category_buttons = document.getElementsByName("category");
-        _this.desired_category = 0;
+        c.desired_category = 0;
         for(var cat of category_buttons)
         {
             if (cat.checked) 
             {
-                _this.desired_category = parseInt(cat.value);
+                c.desired_category = parseInt(cat.value);
             }
         }
-        if (_this.desired_category == 0)
+        if (c.desired_category == 0)
         {
             alert("No Category Selected!");
             return;
         }
-        getQuestion(_this.desired_category);
-
+        model.instance().getQuestion(c.desired_category);
         if(model.instance().current_player.cpu){
             console.log("CPU Turn")
             window.setTimeout(_this.cpuPick, 2000);
@@ -68,18 +67,18 @@ class controller{
 
     checkAnswerButtonClicked()
     {
-        var _this = this;
-        var check = _this.sanityCheck();
+        var c = controller.instance();
+        var check = c.sanityCheck();
         if (check == false) {return;}
 
-        var correct = checkAnswer();
+        var correct = model.instance().checkAnswer();
         if (correct){view.instance().answerCorrect();}
         else{view.instance().answerWrong();}
 
         view.instance().uncheckCategories();
         view.instance().clearQuestion();
         
-        var win = _this.checkScore()
+        var win = c.checkScore()
         if (win) {
             alert("Player " + model.instance().current_player.number + ": " + model.instance().current_player.name + " has won! Congratulations!");
             window.setTimeout(view.instance().reset, 1000);
@@ -162,7 +161,6 @@ class controller{
 
     start()
     {
-        console.log("start");
         var m = model.instance();
         var activations = [m.player1_active, m.player2_active, m.player3_active, m.player4_active];
         var counter = 1;
@@ -233,10 +231,12 @@ class controller{
         }
 
         view.instance().turnGameModeOn();
+
         if (m.current_player.cpu){
             alert("Player " + m.current_player.number + ": " + m.current_player.name + " is rolling the dice. Please move the players token accordingly and fetch a question.");
             controller.instance().roll_die();
         }
+
     }
 
 
