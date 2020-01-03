@@ -276,6 +276,17 @@ class view{
     	document.getElementById("text_question").innerHTML = "";
     }
 
+    highlightAnswer(index)
+    {
+    	var color = model.instance().current_player.color;
+    	document.getElementsByClassName("answer_box")[index].style.border = "2px solid " + color;
+    }
+
+    lowlightAnswer(index)
+    {
+    	document.getElementsByClassName("answer_box")[index].style.border = "1px solid #dcdcdc";
+    }
+
 	static instance(){
 		if(view.instance_ == null){
 			view.instance_ = new view();

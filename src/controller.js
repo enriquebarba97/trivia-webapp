@@ -59,9 +59,10 @@ class controller{
             return;
         }
         getQuestion(_this.desired_category);
-        console.log("new_question_button");
+
         if(model.instance().current_player.cpu){
-            window.setTimeout(controller.instance().cpuTurn, 2000);
+            console.log("CPU Turn")
+            window.setTimeout(_this.cpuPick, 2000);
         }
     }
 
@@ -87,6 +88,7 @@ class controller{
 
         controller.instance().nextPlayer();
         if(model.instance().current_player.cpu){
+            alert("Player " + model.instance().current_player.number + ": " + model.instance().current_player.name + " is rolling the dice. Please move the players token accordingly and fetch a question.");
             controller.instance().roll_die();
         }
     }
@@ -172,6 +174,8 @@ class controller{
         	}
         }
 
+        if(number_of_players == 0){return;}
+
         for (var i = 0; i < activations.length; i++) {
             if (activations[i] == true)
             {
@@ -229,6 +233,10 @@ class controller{
         }
 
         view.instance().turnGameModeOn();
+        if (m.current_player.cpu){
+            alert("Player " + m.current_player.number + ": " + m.current_player.name + " is rolling the dice. Please move the players token accordingly and fetch a question.");
+            controller.instance().roll_die();
+        }
     }
 
 
@@ -251,9 +259,12 @@ class controller{
 	}
 
 
-	cpuTurn(){
+	cpuPick(){
 		var random = Math.floor(Math.random() * 4);
-		document.getElementsByClassName("answer_radio_buttons")[random].checked = true;
+		var answers = document.getElementsByName("answer");
+        answers[random].checked = true;
+        view.instance().highlightAnswer(random);
+        window.setTimeout(function() {view.instance().lowlightAnswer(random)}, 1000);
 	}
 
 	static instance(){
