@@ -31,8 +31,7 @@ class controller{
         };
 
         document.getElementById("new_question_button").onclick = function(){
-        	getQuestion(9);
-        	console.log("new_question_button");
+        	model.instance().getQuestion(model.instance().categories[0]);
         	if(model.instance().current_player.cpu){
         		window.setTimeout(controller.instance().cpuTurn, 2000);
         	}
@@ -102,7 +101,6 @@ class controller{
 
     start()
     {
-        console.log("start");
         var m = model.instance();
         var activations = [m.player1_active, m.player2_active, m.player3_active, m.player4_active];
         var counter = 1;
@@ -171,6 +169,7 @@ class controller{
         }
 
         view.instance().turnGameModeOn();
+
     }
 
 
