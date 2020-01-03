@@ -31,16 +31,18 @@ class controller{
         };
 
         document.getElementById("new_question_button").onclick = function(){
-		    getQuestion(9);
+        	getQuestion(9);
+        	console.log("new_question_button");
+        	if(model.instance().current_player.cpu){
+        		window.setTimeout(controller.instance().cpuTurn, 2000);
+        	}
 		};
 
-		document.getElementById("check_answer_button").onclick = async function(){
+		document.getElementById("check_answer_button").onclick = function(){
 		    checkAnswer();
 		    controller.instance().nextPlayer();
-		    while(model.instance().current_player.cpu){
-		    	controller.instance().cpuTurn();
-				await sleep(2000);
-		    	controller.instance().nextPlayer();
+		    if(model.instance().current_player.cpu){
+		    	controller.instance().roll_die();
 		    }
 		};
 
@@ -191,9 +193,9 @@ class controller{
 	}
 
 
-	async cpuTurn(){
-		this.roll_die();
-		getQuestion(9);
+	cpuTurn(){
+		var random = Math.floor(Math.random() * 4);
+		document.getElementsByClassName("answer_radio_buttons")[random].checked = true;
 	}
 
 
@@ -206,9 +208,4 @@ class controller{
 			return controller.instance_;
 		}
 	}
-}
-
-
-function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
 }

@@ -84,13 +84,13 @@ function updateQuestion(data){
     for(var i=0;i<4;i++){
         if(i==num){
         answers.push(`<label class="answer_box">
-            <input type="radio" name="answer" value="correct">
+            <input type="radio" class=answer_radio_buttons" name="answer" value="correct">
             ${letter}:
             ${question_data.correct_answer}
             </label>`);
         }else{
             answers.push(`<label class="answer_box">
-                <input type="radio" name="answer" value="incorrect">
+                <input type="radio" class="answer_radio_buttons" name="answer" value="incorrect">
                 ${letter}:
                 ${question_data.incorrect_answers[j]}
                 </label>`);
