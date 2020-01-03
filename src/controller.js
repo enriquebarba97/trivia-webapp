@@ -61,7 +61,7 @@ class controller{
         model.instance().getQuestion(c.desired_category);
         if(model.instance().current_player.cpu){
             console.log("CPU Turn")
-            window.setTimeout(_this.cpuPick, 2000);
+            window.setTimeout(controller.instance().cpuPick, 2000);
         }
     }
 
@@ -87,7 +87,7 @@ class controller{
 
         controller.instance().nextPlayer();
         if(model.instance().current_player.cpu){
-            alert("Player " + model.instance().current_player.number + ": " + model.instance().current_player.name + " is rolling the dice. Please move the players token accordingly and fetch a question.");
+            alert("Player " + model.instance().current_player.number + ": " + model.instance().current_player.name + " is rolling the dice. Please move the player's token accordingly and fetch a question.");
             controller.instance().roll_die();
         }
     }
@@ -233,10 +233,9 @@ class controller{
         view.instance().turnGameModeOn();
 
         if (m.current_player.cpu){
-            alert("Player " + m.current_player.number + ": " + m.current_player.name + " is rolling the dice. Please move the players token accordingly and fetch a question.");
+            alert("Player " + m.current_player.number + ": " + m.current_player.name + " is rolling the dice. Please move the player's token accordingly and fetch a question.");
             controller.instance().roll_die();
         }
-
     }
 
 
