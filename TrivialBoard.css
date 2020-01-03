@@ -399,3 +399,29 @@ article section
 {
     margin-top: 10px;
 }
+.qh_question_true
+{
+    font-size:          xx-small;
+    margin-bottom:      2px;
+    padding:            4px;
+    border:             1px solid #000000;
+    background-color:   #22773e;
+}
+.qh_question_false
+{
+    font-size:          x-small;
+    margin-bottom:      2px;
+    padding:            4px;
+    border:             1px solid #000000;
+    background-color:   #c63939;
+}
+#qh
+{
+    
+}
+#q_history
+{
+    overflow-y:     scroll;
+    max-width:      300px;
+    max-height:     280px;
+}

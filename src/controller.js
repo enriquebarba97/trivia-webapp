@@ -39,6 +39,8 @@ class controller{
         document.getElementById("start").onclick = function(){
         	controller.instance().start();
         };
+
+        this.question_history_counter = 1;
 	}
 
     newQuestionButtonClicked()
@@ -75,6 +77,19 @@ class controller{
         if (correct){view.instance().answerCorrect();}
         else{view.instance().answerWrong();}
 
+
+        var new_question    = document.createElement("div");
+
+        if (correct) {new_question.className = "qh_question_true";}
+        else{new_question.className = "qh_question_false";}
+        
+        var question_text = document.createTextNode((controller.instance().question_history_counter).toString() + ".) " + document.getElementById("question").innerHTML);
+        controller.instance().question_history_counter++;
+        new_question.appendChild(question_text);
+
+        document.getElementById("q_history").insertBefore(new_question, document.getElementById("q_history").firstChild);
+
+
         view.instance().uncheckCategories();
         view.instance().clearQuestion();
         
@@ -94,8 +109,13 @@ class controller{
 
     checkScore()
     {
-        if (model.instance().current_player.categories_correct == 4) {return true;}
-        return false;
+        for(var value of model.instance().current_player.categories_correct) {
+            if(value == 0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     sanityCheck()
@@ -231,6 +251,7 @@ class controller{
         }
 
         view.instance().turnGameModeOn();
+
 
         if (m.current_player.cpu){
             alert("Player " + m.current_player.number + ": " + m.current_player.name + " is rolling the dice. Please move the player's token accordingly and fetch a question.");

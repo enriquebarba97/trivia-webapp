@@ -234,20 +234,23 @@ class view{
     	this.greenButton();
     	var category 	= controller.instance().desired_category;
     	var play 		= model.instance().current_player;
-    	play.categories_correct = play.categories_correct + 1;
     	switch(category)
     	{
     		case 27:
     			document.getElementById("green_" + play.number.toString()).style.backgroundColor = "#4dff4d";
+    			play.categories_correct[0] = 1;
     			break;
     		case 22:
     			document.getElementById("blue_" + play.number.toString()).style.backgroundColor = "#3385ff";
+    			play.categories_correct[1] = 1;
     			break;
     		case 23:
     			document.getElementById("yellow_" + play.number.toString()).style.backgroundColor = "#ffff66";
+    			play.categories_correct[2] = 1;
     			break;
     		case 21:
     			document.getElementById("red_" + play.number.toString()).style.backgroundColor = "#ff3333";
+    			play.categories_correct[3] = 1;
     			break;
     	}
     }
