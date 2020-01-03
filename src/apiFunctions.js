@@ -109,6 +109,14 @@ function updateQuestion(data){
 
 
 function checkAnswer(){
+    var answers = document.getElementsByName("answer");
+    for(var a of answers)
+    {
+        if (a.checked && a.value == "correct") {
+            return true;
+        }
+    }
+    return false;
 }
 
 

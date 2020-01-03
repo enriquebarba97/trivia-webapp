@@ -23,7 +23,7 @@ class controller{
         };
 
         document.getElementById("active3").onclick = function(){
-                controller.instance().set_player_config_active(3);
+            controller.instance().set_player_config_active(3);
         };
 
         document.getElementById("active4").onclick = function(){
@@ -31,23 +31,81 @@ class controller{
         };
 
         document.getElementById("new_question_button").onclick = function(){
-        	getQuestion(9);
-        	console.log("new_question_button");
-        	if(model.instance().current_player.cpu){
-        		window.setTimeout(controller.instance().cpuTurn, 2000);
-        	}
+            controller.instance().newQuestionButtonClicked();
 		};
 
 		document.getElementById("check_answer_button").onclick = function(){
-		    checkAnswer();
-		    controller.instance().nextPlayer();
-		    if(model.instance().current_player.cpu){
-		    	controller.instance().roll_die();
-		    }
+            controller.instance().checkAnswerButtonClicked();
 		};
 
         document.getElementById("start").addEventListener('click', _this.start)
 	}
+
+    newQuestionButtonClicked()
+    {
+        var _this = this;
+        var category_buttons = document.getElementsByName("category");
+        _this.desired_category = 0;
+        for(var cat of category_buttons)
+        {
+            if (cat.checked) 
+            {
+                _this.desired_category = parseInt(cat.value);
+            }
+        }
+        if (_this.desired_category == 0)
+        {
+            alert("No Category Selected!");
+            return;
+        }
+        getQuestion(_this.desired_category);
+        console.log("new_question_button");
+        if(model.instance().current_player.cpu){
+            window.setTimeout(controller.instance().cpuTurn, 2000);
+        }
+    }
+
+    checkAnswerButtonClicked()
+    {
+        var _this = this;
+        var check = _this.sanityCheck();
+        if (check == false) {return;}
+
+        var correct = checkAnswer();
+        if (correct){view.instance().answerCorrect();}
+        else{view.instance().answerWrong();}
+
+        view.instance().uncheckCategories();
+        view.instance().clearQuestion();
+        
+        var win = _this.checkScore()
+        if (win) {
+            alert("Player " + model.instance().current_player.number + ": " + model.instance().current_player.name + " has won! Congratulations!");
+            window.setTimeout(view.instance().reset, 1000);
+            return;
+        }
+
+        controller.instance().nextPlayer();
+        if(model.instance().current_player.cpu){
+            controller.instance().roll_die();
+        }
+    }
+
+    checkScore()
+    {
+        if (model.instance().current_player.categories_correct == 4) {return true;}
+        return false;
+    }
+
+    sanityCheck()
+    {
+        var answers = document.getElementsByName("answer");
+        if (answers.length == 0) {
+            alert("No Question Fetched!");
+            return false;
+        }
+        return true;
+    }
 
 
 	roll_die(){
@@ -197,7 +255,6 @@ class controller{
 		var random = Math.floor(Math.random() * 4);
 		document.getElementsByClassName("answer_radio_buttons")[random].checked = true;
 	}
-
 
 	static instance(){
 		if(controller.instance_ == null){

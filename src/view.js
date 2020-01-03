@@ -172,8 +172,15 @@ class view{
 		}
 	}
 
+	reset()
+	{
+		location.reload(true);
+	}
+
 	turnGameModeOff()
 	{
+		this.uncheckCategories();
+
 		var turn_and_dice = document.getElementsByClassName("game_on");
 		for (var i = 0; i < turn_and_dice.length; i++) {
 		  turn_and_dice[i].style.display = "none";
@@ -192,6 +199,8 @@ class view{
 
 	turnGameModeOn()
 	{
+		this.uncheckCategories();
+
 		var turn_and_dice = document.getElementsByClassName("game_on");
 		for (var i = 0; i < turn_and_dice.length; i++) {
 		  turn_and_dice[i].style.display = "block";
@@ -208,6 +217,64 @@ class view{
 		}
 	}
 
+	uncheckCategories()
+    {
+        var categories = document.getElementsByName("category");
+        for(var cat of categories)
+        {
+            cat.checked = false;
+        }
+    }
+
+    answerCorrect()
+    {
+    	this.greenButton();
+    	var category 	= controller.instance().desired_category;
+    	var play 		= model.instance().current_player;
+    	play.categories_correct = play.categories_correct + 1;
+    	switch(category)
+    	{
+    		case 27:
+    			document.getElementById("green_" + play.number.toString()).style.backgroundColor = "#4dff4d";
+    			break;
+    		case 22:
+    			document.getElementById("blue_" + play.number.toString()).style.backgroundColor = "#3385ff";
+    			break;
+    		case 23:
+    			document.getElementById("yellow_" + play.number.toString()).style.backgroundColor = "#ffff66";
+    			break;
+    		case 21:
+    			document.getElementById("red_" + play.number.toString()).style.backgroundColor = "#ff3333";
+    			break;
+    	}
+    }
+
+    answerWrong()
+    {
+    	this.redButton();
+    }
+
+    greenButton()
+    {
+    	document.getElementById("check_answer_button").style.background = "green";
+    	window.setTimeout(this.normalButton, 1500);
+    }
+
+    redButton()
+    {
+    	document.getElementById("check_answer_button").style.background = "red";
+    	window.setTimeout(this.normalButton, 1500);
+    }
+
+    normalButton()
+    {
+    	document.getElementById("check_answer_button").style.background = "#ffffff";
+    }
+
+    clearQuestion()
+    {
+    	document.getElementById("text_question").innerHTML = "";
+    }
 
 	static instance(){
 		if(view.instance_ == null){
