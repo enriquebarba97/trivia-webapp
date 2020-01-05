@@ -12,6 +12,8 @@ let name1 = document.getElementById("name1");
 let name2 = document.getElementById("name2");
 let name3 = document.getElementById("name3");
 let name4 = document.getElementById("name4");
+let roll = document.getElementById("roll");
+let dice_number = document.getElementById("dice_number");
 
 
 
@@ -38,12 +40,16 @@ startgame.addEventListener("click", function() {
   socket.emit("Starting");
 });
 
-
-// Listening to server and changing in all clients
-
-socket.on("Starting", function() {
-  controller.instance().start();
+roll.addEventListener("click", function() {
+setTimeout(function() {
+  socket.emit("Rolling", dice_number.innerHTML);
+},600);
 });
+
+
+// Listening to the server and changing in all clients
+
+
 
 socket.on("Player1 added", function(data) {
   name1.value = data;
@@ -67,5 +73,14 @@ socket.on("Player4 added", function(data) {
   name4.value = data;
    controller.instance().set_player_config_active(4);
 	
+});
+
+socket.on("Starting", function() {
+  controller.instance().start();
+});
+
+socket.on("Rolling", function(data) {
+  console.log(data);
+  dice_number.innerHTML = data;
 });
 

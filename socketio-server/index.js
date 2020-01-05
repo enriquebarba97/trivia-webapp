@@ -23,9 +23,7 @@ const io = SocketIO(server);
 io.on("connection", (socket) => {
   console.log("new connection" , socket.id);
 
-  socket.on("Starting", () => {
-    socket.broadcast.emit("Starting");
-  });
+// Hearing and Responsing to the clients
 
 socket.on("Player1 added", (data) => {
     socket.broadcast.emit("Player1 added", data);
@@ -41,6 +39,14 @@ socket.on("Player3 added", (data) => {
 
 socket.on("Player4 added", (data) => {
     socket.broadcast.emit("Player4 added", data);
+  });
+
+socket.on("Starting", () => {
+    socket.broadcast.emit("Starting");
+  });
+
+socket.on("Rolling", (data) => {
+    socket.broadcast.emit("Rolling", data);
   });
 
 
