@@ -22,4 +22,26 @@ const io = SocketIO(server);
 
 io.on("connection", (socket) => {
   console.log("new connection" , socket.id);
+
+  socket.on("Starting", () => {
+    socket.broadcast.emit("Starting");
+  });
+
+socket.on("Player1 added", (data) => {
+    socket.broadcast.emit("Player1 added", data);
+  });
+
+socket.on("Player2 added", (data) => {
+    socket.broadcast.emit("Player2 added", data);
+  });
+
+socket.on("Player3 added", (data) => {
+    socket.broadcast.emit("Player3 added", data);
+  });
+
+socket.on("Player4 added", (data) => {
+    socket.broadcast.emit("Player4 added", data);
+  });
+
+
 });
