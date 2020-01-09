@@ -131,7 +131,7 @@ class controller{
     {
         var answers = document.getElementsByName("answer");
         if (answers.length == 0) {
-            alert("No Question Fetched!");
+            //alert("No Question Fetched!");
             return false;
         }
         return true;
