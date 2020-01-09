@@ -20,9 +20,16 @@ let category1 = document.getElementById("category1");
 let category2 = document.getElementById("category2");
 let category3 = document.getElementById("category3");
 let category4 = document.getElementById("category4");
-let category_buttons = document.getElementsByName("category");
 let check_answer_button = document.getElementById("check_answer_button");
-let answer_radio_buttons = document.getElementsByClassName("answer_radio_buttons");
+let cpu1 = document.getElementById("cpu1");
+let cpu2 = document.getElementById("cpu2");
+let cpu3 = document.getElementById("cpu3");
+let cpu4 = document.getElementById("cpu4");
+let human1 = document.getElementById("human1");
+let human2 = document.getElementById("human2");
+let human3 = document.getElementById("human3");
+let human4 = document.getElementById("human4");
+let answer_0 = document.getElementById("answer_0");
 
 
 
@@ -87,11 +94,41 @@ check_answer_button.addEventListener("click", function() {
   socket.emit("Checking answer");
 });
 
+cpu1.addEventListener("click", function() {
+  socket.emit("Changing to cpu1");
+});
 
-//answer_radio_buttons[0].addEventListener("click", function() {
-//  socket.emit("Answer selected");
+cpu2.addEventListener("click", function() {
+  socket.emit("Changing to cpu2");
+});
+
+cpu3.addEventListener("click", function() {
+  socket.emit("Changing to cpu3");
+});
+
+cpu4.addEventListener("click", function() {
+  socket.emit("Changing to cpu4");
+});
+
+human1.addEventListener("click", function() {
+  socket.emit("Changing to human1");
+});
+
+human2.addEventListener("click", function() {
+  socket.emit("Changing to human2");
+});
+
+human3.addEventListener("click", function() {
+  socket.emit("Changing to human3");
+});
+
+human4.addEventListener("click", function() {
+  socket.emit("Changing to human4");
+});
+
+//answer_0.addEventListener("click", function() {
+//  socket.emit("answeeer");
 //});
-
 
 
 // Listening to the server and changing in all clients
@@ -127,7 +164,6 @@ socket.on("Starting", function() {
 });
 
 socket.on("Rolling", function(data) {
-  console.log(data);
   dice_number.innerHTML = data;
 });
 
@@ -165,6 +201,38 @@ socket.on("Checking answer", function() {
 
 socket.on("Answer selected", function() {
    console.log("Testing");
+});
+
+socket.on("Changing to cpu1", function() {
+   cpu1.checked= true;
+});
+
+socket.on("Changing to cpu2", function() {
+   cpu2.checked= true;
+});
+
+socket.on("Changing to cpu3", function() {
+   cpu3.checked= true;
+});
+
+socket.on("Changing to cpu4", function() {
+   cpu4.checked= true;
+});
+
+socket.on("Changing to human1", function() {
+   human1.checked= true;
+});
+
+socket.on("Changing to human2", function() {
+   human2.checked= true;
+});
+
+socket.on("Changing to human3", function() {
+   human3.checked= true;
+});
+
+socket.on("Changing to human4", function() {
+   human4.checked= true;
 });
 
 

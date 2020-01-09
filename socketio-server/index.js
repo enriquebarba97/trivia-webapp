@@ -85,5 +85,35 @@ socket.on("Answer selected", () => {
     socket.broadcast.emit("Answer selected");
   });
 
+socket.on("Changing to cpu1", () => {
+    socket.broadcast.emit("Changing to cpu1");
+  });
 
+socket.on("Changing to cpu2", () => {
+    socket.broadcast.emit("Changing to cpu2");
+  });
+
+socket.on("Changing to cpu3", () => {
+    socket.broadcast.emit("Changing to cpu3");
+  });
+
+socket.on("Changing to cpu4", () => {
+    socket.broadcast.emit("Changing to cpu4");
+  });
+
+socket.on("Changing to human1", () => {
+    socket.broadcast.emit("Changing to human1");
+  });
+
+socket.on("Changing to human2", () => {
+    socket.broadcast.emit("Changing to human2");
+  });
+
+socket.on("Changing to human3", () => {
+    socket.broadcast.emit("Changing to human3");
+  });
+
+socket.on("Changing to human4", () => {
+    socket.broadcast.emit("Changing to human4");
+  });
 });
