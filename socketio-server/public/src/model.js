@@ -127,13 +127,13 @@ class model{
 	    for(var i = 0; i < 4; i++){
 	        if(i == num){
 	        answers.push(`<label class="answer_box">
-	            <input type="radio" class=answer_radio_buttons" name="answer" value="correct">
+	            <input type="radio" id="answer_${i}" class=answer_radio_buttons" name="answer" value="correct">
 	            ${letter}:
 	            ${result.correct_answer}
 	            </label>`);
 	        }else{
 	            answers.push(`<label class="answer_box">
-	                <input type="radio" class="answer_radio_buttons" name="answer" value="incorrect">
+	                <input type="radio" id="answer_${i}" class="answer_radio_buttons" name="answer" value="incorrect">
 	                ${letter}:
 	                ${result.incorrect_answers[j]}
 	                </label>`);
