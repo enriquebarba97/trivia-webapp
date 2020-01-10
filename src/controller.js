@@ -36,9 +36,6 @@ class controller{
             data.question = question;
             mes.data = data;
             socket.send(JSON.stringify(mes));
-                // window.setTimeout(function(){
-                // socket.emit("New question", question);
-                // }, 100)
 		};
 
 		document.getElementById("check_answer_button").onclick = function(){
