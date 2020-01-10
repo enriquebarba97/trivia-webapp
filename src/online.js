@@ -304,8 +304,12 @@ answer_1.addEventListener("click", function() {
 
 
 socket.onmessage = function (e){
-  console.log(e);
-  var mes = JSON.parse(e.data);
+  try{
+    var mes = JSON.parse(e.data);
+    }catch(err){
+      alert("Unexpected message from the server")
+      return;
+    }
   var data = mes.data;
   
   switch(mes.event){
