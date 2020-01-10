@@ -73,9 +73,25 @@ socket.on("Selected Category4", () => {
     socket.broadcast.emit("Selected Category4");
   });
 
-socket.on("New question", () => {
-    socket.broadcast.emit("New question");
+socket.on("New question", (data) => {
+    socket.broadcast.emit("New question", data);
   });
+
+socket.on("Answer_0 selected", function() {
+    socket.broadcast.emit("Answer_0 selected");
+ });
+
+socket.on("Answer_1 selected", function() {
+  socket.broadcast.emit("Answer_1 selected");
+});
+
+socket.on("Answer_2 selected", function() {
+  socket.broadcast.emit("Answer_2 selected");
+});
+
+socket.on("Answer_3 selected", function() {
+  socket.broadcast.emit("Answer_3 selected");
+});
 
 socket.on("Checking answer", () => {
     socket.broadcast.emit("Checking answer");

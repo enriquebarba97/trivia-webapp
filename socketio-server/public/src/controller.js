@@ -29,7 +29,10 @@ class controller{
         };
 
         document.getElementById("new_question_button").onclick = function(){
-            controller.instance().newQuestionButtonClicked();
+            var question = controller.instance().newQuestionButtonClicked();
+                window.setTimeout(function(){
+                socket.emit("New question", question);
+                }, 100)
 		};
 
 		document.getElementById("check_answer_button").onclick = function(){
@@ -69,11 +72,12 @@ class controller{
             alert("No Category Selected!");
             return;
         }
-        model.instance().getQuestion(c.desired_category);
+        var question = model.instance().getQuestion(c.desired_category);
         if(model.instance().current_player.cpu){
             console.log("CPU Turn")
             window.setTimeout(controller.instance().cpuPick, 2000);
         }
+        return question;
     }
 
     checkAnswerButtonClicked()

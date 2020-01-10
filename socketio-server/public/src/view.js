@@ -279,7 +279,10 @@ class view{
 
     clearQuestion()
     {
-    	document.getElementById("text_question").innerHTML = "";
+		document.getElementById("question").innerHTML = "";
+		for(var i = 0; i<4; i++){
+			document.getElementById("label_"+ i).innerHTML = "";
+		}
     }
 
     highlightAnswer(index)

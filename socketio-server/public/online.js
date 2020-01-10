@@ -16,6 +16,7 @@ let roll = document.getElementById("roll");
 let dice_number = document.getElementById("dice_number");
 let myCanvas = document.getElementById("myCanvas");
 let new_question_button = document.getElementById("new_question_button");
+let text_question = document.getElementById("text_question");
 let category1 = document.getElementById("category1");
 let category2 = document.getElementById("category2");
 let category3 = document.getElementById("category3");
@@ -30,6 +31,9 @@ let human2 = document.getElementById("human2");
 let human3 = document.getElementById("human3");
 let human4 = document.getElementById("human4");
 let answer_0 = document.getElementById("answer_0");
+let answer_1 = document.getElementById("answer_1");
+let answer_2 = document.getElementById("answer_2");
+let answer_3 = document.getElementById("answer_3");
 
 
 
@@ -86,9 +90,11 @@ category4.addEventListener("click", function() {
 });
 
 
-new_question_button.addEventListener("click", function() {
-  socket.emit("New question");
-});
+// new_question_button.addEventListener("click", function() {
+//   window.setTimeout(function(){
+//   socket.emit("New question", text_question.innerHTML);
+//   }, 100)
+// });
 
 check_answer_button.addEventListener("click", function() {
   socket.emit("Checking answer");
@@ -126,10 +132,21 @@ human4.addEventListener("click", function() {
   socket.emit("Changing to human4");
 });
 
-//answer_0.addEventListener("click", function() {
-//  socket.emit("answeeer");
-//});
+answer_0.addEventListener("click", function() {
+ socket.emit("Answer_0 selected");
+});
 
+answer_1.addEventListener("click", function() {
+  socket.emit("Answer_1 selected");
+ });
+
+ answer_2.addEventListener("click", function() {
+  socket.emit("Answer_2 selected");
+ });
+
+ answer_3.addEventListener("click", function() {
+  socket.emit("Answer_3 selected");
+ });
 
 // Listening to the server and changing in all clients
 
@@ -191,16 +208,46 @@ socket.on("Selected Category4", function() {
 });
 
 
-socket.on("New question", function() {
-   controller.instance().newQuestionButtonClicked();
+socket.on("New question", function(result) {
+    var num = result.cpos;
+    var j = 0;
+    var letter = 'a';
+
+    document.getElementById("question").innerHTML = result.question;
+		
+		for(var i = 0; i< 4; i++){
+			if(i==num){
+				var answer = letter + ": " + result.correct_answer;
+				document.getElementById("label_"+i).innerHTML = answer;
+				document.getElementById("answer_"+i).value = "correct";
+			}else{
+				var answer = letter + ": " + result.incorrect_answers[j];
+				document.getElementById("label_"+i).innerHTML = answer;
+				document.getElementById("answer_"+i).value = "incorrect";
+				j++;
+			}
+			letter = String.fromCharCode(letter.charCodeAt(0) + 1);
+		}
 });
 
 socket.on("Checking answer", function() {
   controller.instance().checkAnswerButtonClicked();  
 });
 
-socket.on("Answer selected", function() {
-   console.log("Testing");
+socket.on("Answer_0 selected", function() {
+  document.getElementById("answer_0").checked = true;
+});
+
+socket.on("Answer_1 selected", function() {
+  document.getElementById("answer_1").checked = true;
+});
+
+socket.on("Answer_2 selected", function() {
+  document.getElementById("answer_2").checked = true;
+});
+
+socket.on("Answer_3 selected", function() {
+  document.getElementById("answer_3").checked = true;
 });
 
 socket.on("Changing to cpu1", function() {

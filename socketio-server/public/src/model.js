@@ -119,36 +119,52 @@ class model{
 		}
 
 		var num = Math.floor(Math.random() * 4);
+		result.cpos = num;
 	    var j = 0;
 	    var letter = 'a';
 	    const answers = [];
 	    const output = [];
 
-	    for(var i = 0; i < 4; i++){
-	        if(i == num){
-	        answers.push(`<label class="answer_box">
-	            <input type="radio" id="answer_${i}" class=answer_radio_buttons" name="answer" value="correct">
-	            ${letter}:
-	            ${result.correct_answer}
-	            </label>`);
-	        }else{
-	            answers.push(`<label class="answer_box">
-	                <input type="radio" id="answer_${i}" class="answer_radio_buttons" name="answer" value="incorrect">
-	                ${letter}:
-	                ${result.incorrect_answers[j]}
-	                </label>`);
-	            j++;
-	        }
-	        letter = this.nextChar(letter);
-	    }
+	    // for(var i = 0; i < 4; i++){
+	    //     if(i == num){
+	    //     answers.push(`<label class="answer_box">
+	    //         <input type="radio" id="answer_${i}" class=answer_radio_buttons" name="answer" value="correct">
+	    //         ${letter}:
+	    //         ${result.correct_answer}
+	    //         </label>`);
+	    //     }else{
+	    //         answers.push(`<label class="answer_box">
+	    //             <input type="radio" id="answer_${i}" class="answer_radio_buttons" name="answer" value="incorrect">
+	    //             ${letter}:
+	    //             ${result.incorrect_answers[j]}
+	    //             </label>`);
+	    //         j++;
+	    //     }
+	    //     letter = this.nextChar(letter);
+	    // }
 
-	    output.push(
-	        `<div class="question" id="question"> ${result.question} </div>
-	        <div class="answers"> ${answers.join('')} </div>`
-	      );
+	    // output.push(
+	    //     `<div class="question" id="question"> ${result.question} </div>
+	    //     <div class="answers"> ${answers.join('')} </div>`
+	    //   );
 
-	    document.getElementById("text_question").innerHTML = output.join('');
-
+		// document.getElementById("text_question").innerHTML = output.join('');
+		document.getElementById("question").innerHTML = result.question;
+		
+		for(var i = 0; i< 4; i++){
+			if(i==num){
+				var answer = letter + ": " + result.correct_answer;
+				document.getElementById("label_"+i).innerHTML = answer;
+				document.getElementById("answer_"+i).value = "correct";
+			}else{
+				var answer = letter + ": " + result.incorrect_answers[j];
+				document.getElementById("label_"+i).innerHTML = answer;
+				document.getElementById("answer_"+i).value = "incorrect";
+				j++;
+			}
+			letter = this.nextChar(letter);
+		}
+				   
 		return result;
 	}
 
