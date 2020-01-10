@@ -85,6 +85,10 @@ class controller{
 
     checkAnswerButtonClicked()
     {
+        if(document.getElementById("question").innerHTML == ""){
+            alert("Get a new question first!");
+            return
+        }
         var c = controller.instance();
         var check = c.sanityCheck();
         if (check == false) {return;}
@@ -111,8 +115,9 @@ class controller{
         
         var win = c.checkScore()
         if (win) {
+            document.getElementById("audio-victory").play();
             alert("Player " + model.instance().current_player.number + ": " + model.instance().current_player.name + " has won! Congratulations!");
-            window.setTimeout(view.instance().reset, 1000);
+            window.setTimeout(view.instance().reset, 5000);
             return;
         }
 
