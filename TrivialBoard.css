@@ -162,6 +162,12 @@ article section
     padding:        7px;
     border:         1px solid #4d4d4d;
 }
+#game-online
+{
+    margin-top:     2%;
+    padding:        7px;
+    border:         1px solid #4d4d4d;
+}
 .player_tag
 {
     float: left;
@@ -171,10 +177,7 @@ article section
     float: right;
     margin-left: 50px;
 }
-#start
-{
-    //margin-top: 25px;
-}
+
 #start_field
 {
     float: right;
