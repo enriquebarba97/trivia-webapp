@@ -140,6 +140,8 @@ class model{
 			}
 			letter = this.nextChar(letter);
 		}
+
+		document.getElementById("text_question").hidden=false;
 				   
 		return result;
 	}

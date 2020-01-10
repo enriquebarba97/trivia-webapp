@@ -260,12 +260,14 @@ class view{
     			document.getElementById("red_" + play.number.toString()).style.backgroundColor = "#ff3333";
     			play.categories_correct[3] = 1;
     			break;
-    	}
+		}
+		document.getElementById("audio-correct").play();
     }
 
     answerWrong()
     {
-    	this.redButton();
+		this.redButton();
+		document.getElementById("audio-incorrect").play();
     }
 
     greenButton()
@@ -291,6 +293,7 @@ class view{
 		for(var i = 0; i<4; i++){
 			document.getElementById("label_"+ i).innerHTML = "";
 		}
+		document.getElementById("text_question").hidden=true;
     }
 
     highlightAnswer(index)
