@@ -70,7 +70,7 @@ class model{
 	    	this.sessionToken();
 	    }
 	    
-	    var url = this.baseURL + "api.php?amount=1&type=multiple&category=" + category;
+	    var url = this.baseURL + "api.php?amount=1&type=multiple&token="+this.token+"&category=" + category;
 	    var req = new XMLHttpRequest();
 	    req.onreadystatechange = function(){
 	        if(req.readyState==4){
@@ -176,8 +176,9 @@ class model{
 	            }
 	        }
 	    }
-	    req.open("get", url, true);
-	    req.send(null);
+	    req.open("get", url, false);
+		req.send(null);
+		this.token = req.token;
 	}
 
 

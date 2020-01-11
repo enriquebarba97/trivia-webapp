@@ -164,13 +164,15 @@ class view{
 		v.allow_drag = false;
 		v.canvas.onmousemove = null;
 		var cp = model.instance().current_player;
-		var mes = {};
-		var data = {}
-		mes.event = "Moving player";
-		data.x = cp.x;
-		data.y = cp.y;
-		mes.data = data;
-		socket.send(JSON.stringify(mes));
+		if(socket!=null){
+			var mes = {};
+			var data = {}
+			mes.event = "Moving player";
+			data.x = cp.x;
+			data.y = cp.y;
+			mes.data = data;
+			socket.send(JSON.stringify(mes));
+		}
 	}
 
 

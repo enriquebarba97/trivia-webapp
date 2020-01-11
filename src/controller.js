@@ -30,12 +30,14 @@ class controller{
 
         document.getElementById("new_question_button").onclick = function(){
             var question = controller.instance().newQuestionButtonClicked();
-            var mes = {};
-            var data = {};
-            mes.event = "New question";
-            data.question = question;
-            mes.data = data;
-            socket.send(JSON.stringify(mes));
+            if(socket!=null){
+                var mes = {};
+                var data = {};
+                mes.event = "New question";
+                data.question = question;
+                mes.data = data;
+                socket.send(JSON.stringify(mes));
+            }
 		};
 
 		document.getElementById("check_answer_button").onclick = function(){
