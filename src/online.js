@@ -350,6 +350,8 @@ document.getElementById("active-online").addEventListener("click", function () {
           }
           letter = String.fromCharCode(letter.charCodeAt(0) + 1);
         }
+
+        document.getElementById("text_question").hidden=false;
         break;
       case "Checking answer":
         controller.instance().checkAnswerButtonClicked();
