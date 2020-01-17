@@ -3,7 +3,6 @@ var documentation = `
 #-----------------------Documentation---------------------#
 #######################################
 
-
 How To Play
 -----------------------------------------------------------
 Select The Number of Players by clicking the "toggle" 
@@ -22,6 +21,7 @@ question. Select one of the answers and click the "check
 Answer" button. If it is the computers turn, an answer will
 be selected automatically. The button will turn red or
 green depending on whether or not the answer was correct.
+Rest of the Documentation can be found in doc.txt...
 
 The goal of the game is to answer one question of each 
 category correctly. Your current score is displayed on the
